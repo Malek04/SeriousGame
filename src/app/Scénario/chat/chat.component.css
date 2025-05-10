@@ -1,0 +1,143 @@
+.chat-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  height: 20px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: #f7c948;
+  color: black;
+  text-align: center;
+  line-height: 20px;
+  transition: width 0.3s ease-in-out;
+}
+
+.chat-row {
+  display: flex;
+  margin: 10px 0;
+}
+
+.chat-row.left {
+  justify-content: flex-start;
+}
+
+.chat-row.right {
+  justify-content: flex-end;
+}
+
+.message-with-image {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chat-bubble {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  color: white;
+  position: relative;
+  display: inline-block;
+}
+
+/* Distinct colored backgrounds per role */
+.narrator {
+  width: 100%; /* Make the narrator's message take the full width */
+  background-color: #6c757d; /* gray */
+  text-align: center;
+}
+
+.madame-monia {
+  background-color: #007bff; /* blue */
+}
+
+.me {
+  background-color: #28a745; /* green */
+}
+
+.game-question {
+  background-color: #ffc107; /* yellow */
+  color: black;
+}
+
+.correct {
+  background-color: #28a745;
+  color: white;
+  border-left: 5px solid #218838;
+}
+
+.incorrect {
+  background-color: #dc3545;
+  color: white;
+  border-left: 5px solid #bd2130;
+}
+
+.options button {
+  margin: 5px 5px 0 0;
+}
+
+.chat-bubble::after {
+  content: '|';
+  animation: blink 1s step-start infinite;
+  display: inline-block;
+  margin-left: 2px;
+}
+
+.chat-bubble:not([partial])::after {
+  content: '';
+  animation: none;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Ensure the narrator's messages take full width */
+.chat-row.narrator .chat-bubble {
+  width: 100%;
+  background: #f9f9f9; /* Light gray background for narrator */
+  color: black;
+  text-align: center;
+}
+
+.left .message-with-image {
+  flex-direction: row; /* Left side messages */
+}
+
+.right .message-with-image {
+  flex-direction: row-reverse; /* Right side messages (for 'me') */
+}
+
+.left .message-text {
+  text-align: left;
+}
+
+.right .message-text {
+  text-align: right;
+}

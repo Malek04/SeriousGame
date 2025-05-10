@@ -1,0 +1,85 @@
+[
+  {
+    "id": 1,
+    "role": "narrator",
+    "message": "Vous êtes médecin généraliste. Un jour, dans l'ascenseur de votre immeuble, Mme Monia,, votre voisine, âgée de 67 ans, vous interpelle. Elle vient de subir une fracture du poignet gauche après avoir glissé dans sa cuisine. Elle a été plåtrée aux urgences et est rentrée chez elle."
+  },
+  {
+    "id": 2,
+    "role": "mme_monia",
+    "message": "Vous savez docteur, je voulais juste attraper une olive... et paf! Mon poignet a dit stop!"
+  },
+  {
+    "id": 3,
+    "role": "game",
+    "question": "Quelle est la conduite à tenir face à cette situation ?",
+    "options": {
+      "A": {
+        "text": "Rien, c'est une fracture banale après chute",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "L'inviter à venir consulter devant la suspicion d'une fracture ostéoporotique.",
+        "isCorrect": true,
+        "feedback": "Toute fracture survenue après un traumatisme minime chez une personne âgée doit faire suspecter une ostéoporose."
+      },
+      "C": {
+        "text": "Lui proposer une radio de contrôle dans un mois.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Lui proposer de faire des exercices de musculation pour renforcer son poignet.",
+        "isCorrect": false
+      }
+    },
+    "next": 4
+  },
+ {
+    "id": 4,
+    "role": "mme_monia",
+    "message": "C'est pas grand chose hein? Ça doit arriver à tout le monde de tomber... non?"
+  },
+  {
+    "id": 5,
+    "role": "me",
+    "message": "Vous Ne vous inquiétez pas madame Monia. Venez moi voir et on va faire le point ensembles"
+  },
+  {
+    "id": 6,
+    "role": "narrator",
+    "message": "Elle accepte de venir consulter. Vous débutez votre évaluation clinique."
+  },
+  {
+    "id": 7,
+    "role": "game",
+    "question": "Quel(s) facteur(s) de risque sont à rechercher lors de l'interrogatoire ?",
+    "options": {
+      "A": {
+        "text": "Une menopause tardive",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Une prise prolongée d'AINS",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Une fracture du col fémoral chez la mère",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Un tabagisme actif.",
+        "isCorrect": true
+      },
+      "E": {
+        "text": " Une obésité.",
+        "isCorrect": true
+      }
+    },
+    "next": 8
+  },
+  {
+    "id": 8,
+    "role": "mme_monia",
+    "message": "Ma mère s'était cassé la hanche... mais elle avait 85 ans ! Et moi je bouge tout le temps et je fais toujours mes cours de danse."
+  }
+]

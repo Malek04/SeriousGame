@@ -1,0 +1,60 @@
+<div class="chat-container">
+  <div class="header">
+    <h2>Cas Clinique : Fracture & Ostéoporose</h2>
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="(currentIndex / scenario.length) * 100">
+        {{ (currentIndex / scenario.length) * 100 | number: '1.0-0' }}%
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor="let entry of chatHistory" class="chat-row"
+       [ngClass]="{
+         'left': entry.from !== 'me',
+         'right': entry.from === 'me'
+       }">
+
+    <!-- Message -->
+    <div *ngIf="entry.type === 'message'" class="chat-bubble"
+         [ngClass]="{
+           'narrator': entry.from === 'narrator',
+           'madame-monia': entry.from === 'mme_monia',
+           'me': entry.from === 'me'
+         }">
+      <div class="message-with-image">
+        <!-- Only show image if the speaker is not the narrator -->
+        <img *ngIf="entry.from !== 'narrator'" [src]="entry.imageUrl" alt="Profile Image" class="profile-image">
+        <div class="message-text">
+          <strong>{{ entry.from | titlecase }}:</strong>
+          <span [innerHTML]="entry.text"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div *ngIf="entry.type === 'question'" class="chat-bubble game-question">
+      <p><strong>{{ entry.data.question }}</strong></p>
+      <div class="options">
+        <button *ngFor="let key of objectKeys(entry.data.options)"
+                mat-raised-button
+                [color]="selectedOptions[entry.data.id] && selectedOptions[entry.data.id].has(key) ? 'accent' : 'primary'"
+                (click)="toggleOption(entry.data.id, key)">
+          {{ key }}. {{ entry.data.options[key].text }}
+        </button>
+      </div>
+      <button *ngIf="selectedOptions[entry.data.id] && selectedOptions[entry.data.id].size > 0"
+              mat-raised-button
+              color="warn"
+              (click)="submitMultipleAnswers()">
+        Valider
+      </button>
+    </div>
+
+    <!-- Feedback -->
+    <div *ngIf="entry.type === 'answer'" class="chat-bubble"
+         [ngClass]="{ 'correct': entry.correct, 'incorrect': !entry.correct }">
+      <em>{{ entry.feedback || 'Merci pour votre réponse.' }}</em>
+    </div>
+
+  </div>
+</div>
