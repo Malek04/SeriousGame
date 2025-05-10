@@ -15,18 +15,17 @@
          'left': entry.from !== 'me' && entry.from !== 'narrator'
        }">
 
-    <!-- Narrator Message -->
+    <!-- Narrator -->
     <div *ngIf="entry.type === 'message' && entry.from === 'narrator'" class="chat-bubble narrator">
       <div class="message-text narrator-text">
         <span [innerHTML]="entry.text"></span>
       </div>
     </div>
 
-    <!-- Regular Message -->
+    <!-- Messages -->
     <ng-container *ngIf="entry.type === 'message' && entry.from !== 'narrator'">
       <div class="message-container" [ngClass]="entry.from === 'me' ? 'me' : 'other'">
-        <div *ngIf="entry.from === 'me'" class="speaker-name">{{ entry.from | titlecase }}</div>
-        <div *ngIf="entry.from !== 'me'" class="speaker-name">{{ entry.from | titlecase }}</div>
+        <div class="speaker-name">{{ entry.from | titlecase }}</div>
         <div class="message-wrapper">
           <img [src]="entry.imageUrl" alt="Profile Image" class="profile-image" />
           <div class="chat-bubble"
@@ -35,8 +34,12 @@
                  'me': entry.from === 'me',
                  'doctor': entry.from === 'dr_sami'
                }">
-            <div class="message-text">
-              <span [innerHTML]="entry.text"></span>
+            <div class="message-text"
+                 [ngClass]="{
+                   'typing-switch': entry.from === 'mme_monia' || entry.from === 'me'
+                 }">
+              <span *ngIf="entry.partial" class="dots">...</span>
+              <span *ngIf="!entry.partial" class="real-message">{{ entry.text }}</span>
             </div>
           </div>
         </div>
@@ -54,7 +57,7 @@
           {{ key }}. {{ entry.data.options[key].text }}
         </button>
       </div>
-      <button *ngIf="selectedOptions[entry.data.id] && selectedOptions[entry.data.id].size > 0"
+      <button *ngIf="isOptionSelected(entry.data.id)"
               mat-raised-button
               color="warn"
               (click)="submitMultipleAnswers()">

@@ -29,6 +29,7 @@
   transition: width 0.3s ease-in-out;
 }
 
+/* Chat Layout */
 .chat-row {
   margin: 15px 0;
 }
@@ -39,20 +40,18 @@
   flex-direction: column;
 }
 
-.chat-row.left .message-wrapper {
+.chat-row.left .message-wrapper,
+.chat-row.right .message-wrapper {
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
 .chat-row.right .message-wrapper {
-  display: flex;
-  flex-direction: row;
   justify-content: flex-end;
-  align-items: flex-start;
 }
 
+/* Narrator Message */
 .chat-row.narrator {
   justify-content: center;
   width: 100%;
@@ -83,18 +82,18 @@
 
 .message-container.me {
   align-items: flex-end;
-  text-align: left; /* Align text left inside the bubble */
   background: transparent !important;
 }
 
 .message-container.other {
   align-items: flex-start;
-  text-align: left;
 }
 
 .speaker-name {
   font-weight: bold;
   margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #555;
 }
 
 .profile-image {
@@ -125,32 +124,36 @@
 
 .chat-bubble {
   max-width: 70%;
+  width: 100%;
   padding: 10px 15px;
   border-radius: 20px;
   line-height: 1.5;
   word-wrap: break-word;
   word-break: break-word;
-  white-space: pre-line;
+  white-space: normal;
   text-align: left;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   color: white;
+  display: block;
   position: relative;
-  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
 }
 
-/* ✅ Bubble colors */
+.chat-bubble .message-text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Specific Roles */
 .madame-monia {
   background-color: #007bff;
 }
 
 .me {
-  background-color: #28a745 !important; /* Green */
+  background-color: #28a745 !important;
   color: white;
-  padding: 10px 15px;
-  border-radius: 20px;
-  text-align: left;
 }
-
 
 .doctor {
   background-color: #17a2b8;
@@ -173,22 +176,45 @@
   border-left: 5px solid #bd2130;
 }
 
+/* Options */
 .options button {
   margin: 5px 5px 0 0;
 }
 
-/* ✅ Disable typing effect */
-.chat-bubble::after {
-  content: '';
-  animation: none;
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes blink {
-  50% { opacity: 0; }
+/* Show dots then message */
+.typing-switch .dots {
+  display: inline-block;
+  animation: fadeOutDots 0s forwards;
+  animation-delay: 1.5s;
 }
-.speaker-name {
-  font-weight: bold;
-  margin-bottom: 5px;
-  font-size: 0.9rem;
-  color: #555;
+
+.typing-switch .real-message {
+  display: inline-block;
+  opacity: 0;
+  animation: showRealMessage 0s forwards;
+  animation-delay: 0s;
+}
+
+@keyframes fadeOutDots {
+  to {
+    display: none;
+  }
+}
+
+@keyframes showRealMessage {
+  to {
+    opacity: 1;
+  }
 }

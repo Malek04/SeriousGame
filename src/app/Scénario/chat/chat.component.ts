@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import scenario from '../file/scenario1.json';
 import Swal from 'sweetalert2';
@@ -9,13 +9,11 @@ interface GameStep {
   message?: string;
   question?: string;
   options?: {
-    [key: string]:
-      | {
-          text: string;
-          isCorrect: boolean;
-          feedback?: string;
-        }
-      | undefined;
+    [key: string]: {
+      text: string;
+      isCorrect: boolean;
+      feedback?: string;
+    };
   };
   next?: number;
 }
@@ -32,32 +30,27 @@ export class ChatComponent implements OnInit {
   selectedOption: string | null = null;
   showFeedback = false;
   feedbackMessage = '';
-  selectedOptions: { [key: number]: Set<string> } = {}; // Track selected options for each question
+  selectedOptions: { [key: number]: Set<string> } = {};
 
-  // Define profile images for each character
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/monia.png',
     me: 'assets/doc.png',
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.scenario = scenario;
+    this.scenario = scenario as GameStep[];
     this.playNext();
   }
 
   async playNext(): Promise<void> {
     const step = this.scenario[this.currentIndex];
-    console.log(step); // Debug log to check the step data
-
-    if (!step) return; // Ensure step exists
+    if (!step) return;
 
     if (step.role === 'game') {
-      // Add the question to the chat history
       this.chatHistory.push({ type: 'question', data: step });
     } else {
-      // Add regular message to the chat history
       const message = {
         type: 'message',
         from: step.role,
@@ -66,33 +59,31 @@ export class ChatComponent implements OnInit {
         imageUrl: this.profileImages[step.role],
       };
       this.chatHistory.push(message);
-      await this.typeText(step.message || '', message);
+
+      // Wait before simulating typing (show typing dots)
+      await new Promise((res) => setTimeout(res, 1000));
+
+      // Instantly show full message after delay
+      message.text = step.message ?? '';
       message.partial = false;
+
+      this.cdRef.detectChanges();
+
       this.currentIndex++;
       setTimeout(() => this.playNext(), 1000);
     }
   }
 
-  async typeText(
-    fullText: string,
-    messageObj: { text: string }
-  ): Promise<void> {
-    const chars = fullText.split('');
-    for (let i = 0; i < chars.length; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 25));
-      messageObj.text += chars[i];
-    }
-  }
-
   toggleOption(questionId: number, key: string): void {
     if (!this.selectedOptions[questionId]) {
-      this.selectedOptions[questionId] = new Set<string>(); // Initialize the Set if not present
+      this.selectedOptions[questionId] = new Set<string>();
     }
 
-    if (this.selectedOptions[questionId].has(key)) {
-      this.selectedOptions[questionId].delete(key);
+    const optionsSet = this.selectedOptions[questionId];
+    if (optionsSet.has(key)) {
+      optionsSet.delete(key);
     } else {
-      this.selectedOptions[questionId].add(key);
+      optionsSet.add(key);
     }
   }
 
@@ -107,7 +98,6 @@ export class ChatComponent implements OnInit {
         (answer) => step.options![answer]?.isCorrect
       );
 
-      // If any answer is incorrect, show SweetAlert and refresh the page on retry
       if (!allCorrect) {
         Swal.fire({
           title: 'Vous avez perdu',
@@ -115,21 +105,19 @@ export class ChatComponent implements OnInit {
           icon: 'error',
           confirmButtonText: 'Réessayer',
         }).then(() => {
-          location.reload(); // Refresh the page on retry
+          location.reload();
         });
         return;
       }
 
-      // Push the answers with feedback if all answers are correct
       this.chatHistory.push({
         type: 'answer',
         feedback: feedbacks.join(', '),
         correct: allCorrect,
       });
 
-      // Logic to move to the next step
       setTimeout(() => {
-        this.selectedOptions[step.id] = new Set(); // Reset selected options
+        this.selectedOptions[step.id] = new Set();
         this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
         this.playNext();
       }, 3000);
@@ -142,5 +130,9 @@ export class ChatComponent implements OnInit {
 
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
+  }
+
+  isOptionSelected(id: number): boolean {
+    return (this.selectedOptions[id]?.size || 0) > 0;
   }
 }
