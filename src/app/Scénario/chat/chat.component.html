@@ -25,7 +25,8 @@
     <!-- Regular Message -->
     <ng-container *ngIf="entry.type === 'message' && entry.from !== 'narrator'">
       <div class="message-container" [ngClass]="entry.from === 'me' ? 'me' : 'other'">
-        <div class="speaker-name">{{ entry.from | titlecase }}</div>
+        <div *ngIf="entry.from === 'me'" class="speaker-name">{{ entry.from | titlecase }}</div>
+        <div *ngIf="entry.from !== 'me'" class="speaker-name">{{ entry.from | titlecase }}</div>
         <div class="message-wrapper">
           <img [src]="entry.imageUrl" alt="Profile Image" class="profile-image" />
           <div class="chat-bubble"
