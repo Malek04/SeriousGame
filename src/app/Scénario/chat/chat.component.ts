@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import scenario from '../file/scenario1.json';
+import Swal from 'sweetalert2';
 
 interface GameStep {
   id: number;
@@ -106,7 +107,20 @@ export class ChatComponent implements OnInit {
         (answer) => step.options![answer]?.isCorrect
       );
 
-      // Push the answers with feedback
+      // If any answer is incorrect, show SweetAlert and refresh the page on retry
+      if (!allCorrect) {
+        Swal.fire({
+          title: 'Vous avez perdu',
+          text: 'Réessayez!',
+          icon: 'error',
+          confirmButtonText: 'Réessayer',
+        }).then(() => {
+          location.reload(); // Refresh the page on retry
+        });
+        return;
+      }
+
+      // Push the answers with feedback if all answers are correct
       this.chatHistory.push({
         type: 'answer',
         feedback: feedbacks.join(', '),

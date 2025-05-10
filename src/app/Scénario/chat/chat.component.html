@@ -53,7 +53,7 @@
     <!-- Feedback -->
     <div *ngIf="entry.type === 'answer'" class="chat-bubble"
          [ngClass]="{ 'correct': entry.correct, 'incorrect': !entry.correct }">
-      <em>{{ entry.feedback || 'Merci pour votre réponse.' }}</em>
+      <em>Feedback: {{ entry.feedback || 'Correct' }}</em>
     </div>
 
   </div>

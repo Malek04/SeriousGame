@@ -81,5 +81,278 @@
     "id": 8,
     "role": "mme_monia",
     "message": "Ma mère s'était cassé la hanche... mais elle avait 85 ans ! Et moi je bouge tout le temps et je fais toujours mes cours de danse."
+  },
+  {
+    "id": 9,
+    "role": "narrator",
+    "message": "Vous lui prescrivez des examens complémentaires."
+  },
+  {
+    "id": 10,
+    "role": "game",
+    "question": " Quel(s) examen(s) radiologique(s) faut-il prescrire pour évaluer la fragilité osseuse ?",
+    "options": {
+      "A": {
+        "text": "Radiographie du poignet",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "LDensitométrie osseuse (DMO)",
+        "isCorrect": true,
+        "feedback": "La DMO est l'examen de référence pour quantifier la densité mínérale osseuse."
+      },
+      "C": {
+        "text": "Radiographie du bassin.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Aucun examen, le diagnostic est clinique",
+        "isCorrect": false
+      }
+    },
+    "next": 11
+  },
+  {
+    "id": 11,
+    "role": "mme_monia",
+    "message": "Une densito... quoi ? J'ai pas de densité moi, j'ai du peps!"
+  },
+  {
+    "id": 12,
+    "role": "narrator",
+    "message": "La patiente revient avec sa DMO : Résultats: T-score-2.5 au rachis lombaire, -2.4 au col fémoral"
+  },
+  {
+    "id": 13,
+    "role": "mme_monia",
+    "message": "Alors docteur, vous allez me dire que j'ai des os en mousse maintenant ?"
+  },
+  {
+    "id": 14,
+    "role": "game",
+    "question": "À ce stade, le diagnostic d'ostéoporose est-il confirmé ?",
+    "options": {
+      "A": {
+        "text": "Vrai",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Faux",
+        "isCorrect": true,
+        "feedback": "Une DMO avec T-score ≤ -2,5 évoque une ostéopathie raréfiante, mais le diagnostic d'ostéoporose nécessite de faire un bilan étiologique."
+      }
+    },
+    "next": 15
+  },
+  {
+    "id": 15,
+    "role": "game",
+    "question": "Quels examens biologiques prescrire pour compléter le diagnostic?",
+    "options": {
+      "A": {
+        "text": "Bilan renal",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "Bilan hépatique",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Bilan phosphocalcique",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Électrophorèse des protéines",
+        "isCorrect": true
+      },
+      "E": {
+        "text": "Prolactinémie",
+        "isCorrect": false
+      }
+    },
+    "next": 16
+  },
+  {
+    "id": 16,
+    "role": "mme_monia",
+    "message": "Bon, si je dois faire une prise de sang, vous me promettez un bonbon après?."
+  },
+  {
+    "id": 17,
+    "role": "narrator",
+    "message": "Résultats du bilan biologique \n Calcémie: 21 mmol/l. \nThosphorêtnie: L1 mmol/L. \nPAL: 140 UL/L \nCreatinine: 70 µmol/L \n Albumine: 32 g/L \n EPP: Pas de pic monoclorual"
+  },
+  {
+    "id": 18,
+    "role": "game",
+    "question": "Interprétation de ces résultats ?",
+    "options": {
+      "A": {
+        "text": "Calcémie normale",
+        "isCorrect": true,
+        "feedback": "La calcémie corrigée (2.3 mmol/L) est normale. Ce bilan élimine les autres causes d'ostéopathies raréfiantes (IRC, myélome, ostéomalacie...)."
+      },
+      "B": {
+        "text": "Hypocalcemie",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Élévation des phosphatases alcalines",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Hypophosphoretile",
+        "isCorrect": false
+      }
+    },
+    "next": 19
+  },
+  {
+    "id": 19,
+    "role": "mme_monia",
+    "message": "Ah ben voilà, je suis normale finalement! Je vous l'avais dit que c'était rien de grave!"
+  },
+  {
+    "id": 20,
+    "role": "game",
+    "question": "Quel est le diagnostic à retenir ?",
+    "options": {
+      "A": {
+        "text": "Osteopénie",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Ostéoporose sévére",
+        "isCorrect": true,
+        "feedback":"Une fracture de fragilité avec T-score s-2,5 ostéoporose sévère (OMS)."
+      },
+      "C": {
+        "text": "Ostéoporose",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Normal",
+        "isCorrect": false
+      }
+    },
+    "next": 21
+  },
+  {
+    "id": 21,
+    "role": "mme_monia",
+    "message": "Ostéoporose sévère ? Vous êtes sûr que vous ne confondez pas avec ma voisine du 3ème étage?"
+  },
+  {
+    "id": 22,
+    "role": "game",
+    "question": "Quelle prise en charge médicamenteuse proposer ?",
+    "options": {
+      "A": {
+        "text": "Aucun traitement, simple surveillance",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Calcium vitamine D uniquement",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Bisphosphonates calcium vitamine D",
+        "isCorrect": true,
+        "feedback": "Les bisphosphonates sont le traitement de première intention en cas d'ostéoporose sévére."
+      },
+      "D": {
+        "text": "Teriparatide",
+        "isCorrect": false
+      }
+    },
+    "next": 23
+  },
+  {
+    "id": 23,
+    "role": "mme_monia",
+    "message": "Des bisphos-machins ? Vous êtes sûr que ce n'est pas pour les dinosaures, ce nom-là?"
+  },
+  {
+    "id": 24,
+    "role": "mme_monia",
+    "message": "Sinon, ya-t-il autre chose que je puisse faire pour éviter une autre fracture, docteur?"
+  },
+  {
+    "id": 25,
+    "role": "game",
+    "question": "Quelles mesures hygiéno-diététiques recommanderiez-vous?",
+    "options": {
+      "A": {
+        "text": "Encourager une activité physique régulière",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "Cesser le tabac",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Alimentation riche en calcium et vitamine D",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Prévention des chutes (aménagement, éclairage, correction visuelle)",
+        "isCorrect": true
+      },
+      "E": {
+        "text": "Réduction de la consommation d'alcool",
+        "isCorrect": true
+      }
+    },
+    "next": 26
+  },
+  {
+    "id": 26,
+    "role": "mme_monia",
+    "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur ?"
+  },
+  {
+    "id": 27,
+    "role": "mme_monia",
+    "message": "Je vais devoir repasser des examens ? Si vous venez avec des croissants, je veux bien !"
+  },
+  {
+    "id": 27,
+    "role": "game",
+    "question": "Quelle surveillance mettre en place?",
+    "options": {
+      "A": {
+        "text": "DMO à la fin du traitement",
+        "isCorrect": true,
+        "feedback":"La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+      },
+      "B": {
+        "text": "DMO tous les 2 à 3 ans",
+        "isCorrect": true,
+        "feedback":"La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+      },
+      "C": {
+        "text": "Dosage sanguin du traitement pour vérifier l'observance",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Mesure de la taille",
+        "isCorrect": true,
+        "feedback":"La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+      },
+      "E": {
+        "text": "Non ce n'est pas nécessaire",
+        "isCorrect": false
+      }
+    },
+    "next": 28
+  },{
+    "id": 29,
+    "role": "mme_monia",
+    "message": "Merci docteur Grâce à vous, je vais pouvoir danser encore longtemps... mais avec des chaussures antidérapantes cette fois!"
+  },
+  {
+    "id": 30,
+    "role": "fin du scénario - Synthese",
+    "message": "Vous avez:\nIdentifié une fracture de fragilité\nRéalisé les explorations nécessaires (DMO + bilan)\nPosé le diagnostic d'ostéoporose sévère\nMis en place un traitement adapté\nConseillé les bonnes mesures de prévention\nOrganisé une surveillance à long terme\n"
   }
 ]
