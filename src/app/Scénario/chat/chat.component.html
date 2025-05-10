@@ -10,26 +10,37 @@
 
   <div *ngFor="let entry of chatHistory" class="chat-row"
        [ngClass]="{
-         'left': entry.from !== 'me',
-         'right': entry.from === 'me'
+         'right': entry.from === 'me',
+         'narrator': entry.from === 'narrator',
+         'left': entry.from !== 'me' && entry.from !== 'narrator'
        }">
 
-    <!-- Message -->
-    <div *ngIf="entry.type === 'message'" class="chat-bubble"
-         [ngClass]="{
-           'narrator': entry.from === 'narrator',
-           'madame-monia': entry.from === 'mme_monia',
-           'me': entry.from === 'me'
-         }">
-      <div class="message-with-image">
-        <!-- Only show image if the speaker is not the narrator -->
-        <img *ngIf="entry.from !== 'narrator'" [src]="entry.imageUrl" alt="Profile Image" class="profile-image">
-        <div class="message-text">
-          <strong>{{ entry.from | titlecase }}:</strong>
-          <span [innerHTML]="entry.text"></span>
-        </div>
+    <!-- Narrator Message -->
+    <div *ngIf="entry.type === 'message' && entry.from === 'narrator'" class="chat-bubble narrator">
+      <div class="message-text narrator-text">
+        <span [innerHTML]="entry.text"></span>
       </div>
     </div>
+
+    <!-- Regular Message -->
+    <ng-container *ngIf="entry.type === 'message' && entry.from !== 'narrator'">
+      <div class="message-container" [ngClass]="entry.from === 'me' ? 'me' : 'other'">
+        <div class="speaker-name">{{ entry.from | titlecase }}</div>
+        <div class="message-wrapper">
+          <img [src]="entry.imageUrl" alt="Profile Image" class="profile-image" />
+          <div class="chat-bubble"
+               [ngClass]="{
+                 'madame-monia': entry.from === 'mme_monia',
+                 'me': entry.from === 'me',
+                 'doctor': entry.from === 'dr_sami'
+               }">
+            <div class="message-text">
+              <span [innerHTML]="entry.text"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
 
     <!-- Question -->
     <div *ngIf="entry.type === 'question'" class="chat-bubble game-question">
@@ -55,6 +66,5 @@
          [ngClass]="{ 'correct': entry.correct, 'incorrect': !entry.correct }">
       <em>Feedback: {{ entry.feedback || 'Correct' }}</em>
     </div>
-
   </div>
 </div>

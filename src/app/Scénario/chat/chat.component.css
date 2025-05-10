@@ -30,28 +30,97 @@
 }
 
 .chat-row {
-  display: flex;
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
-.chat-row.left {
-  justify-content: flex-start;
-}
-
+.chat-row.left,
 .chat-row.right {
-  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
 }
 
-.message-with-image {
+.chat-row.left .message-wrapper {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.chat-row.right .message-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.chat-row.narrator {
+  justify-content: center;
+  width: 100%;
+}
+
+.chat-row.narrator .chat-bubble {
+  width: 100%;
+  max-width: 100%;
+  background-color: #f0f0f0;
+  color: #333;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-style: italic;
+}
+
+.narrator-text {
+  text-align: center;
+  width: 100%;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
+
+.message-container.me {
+  align-items: flex-end;
+  text-align: left; /* Align text left inside the bubble */
+  background: transparent !important;
+}
+
+.message-container.other {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.speaker-name {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .profile-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chat-row.left .profile-image {
   margin-right: 10px;
+  order: 0;
+}
+
+.chat-row.right .profile-image {
+  margin-left: 10px;
+  order: 2;
+}
+
+.chat-row.right .chat-bubble {
+  order: 1;
+}
+
+.message-wrapper {
+  display: flex;
+  align-items: flex-start;
 }
 
 .chat-bubble {
@@ -60,29 +129,35 @@
   border-radius: 20px;
   line-height: 1.5;
   word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-line;
+  text-align: left;
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
   color: white;
   position: relative;
   display: inline-block;
 }
 
-/* Distinct colored backgrounds per role */
-.narrator {
-  width: 100%; /* Make the narrator's message take the full width */
-  background-color: #6c757d; /* gray */
-  text-align: center;
-}
-
+/* ✅ Bubble colors */
 .madame-monia {
-  background-color: #007bff; /* blue */
+  background-color: #007bff;
 }
 
 .me {
-  background-color: #28a745; /* green */
+  background-color: #28a745 !important; /* Green */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  text-align: left;
+}
+
+
+.doctor {
+  background-color: #17a2b8;
 }
 
 .game-question {
-  background-color: #ffc107; /* yellow */
+  background-color: #ffc107;
   color: black;
 }
 
@@ -102,42 +177,12 @@
   margin: 5px 5px 0 0;
 }
 
+/* ✅ Disable typing effect */
 .chat-bubble::after {
-  content: '|';
-  animation: blink 1s step-start infinite;
-  display: inline-block;
-  margin-left: 2px;
-}
-
-.chat-bubble:not([partial])::after {
   content: '';
   animation: none;
 }
 
 @keyframes blink {
   50% { opacity: 0; }
-}
-
-/* Ensure the narrator's messages take full width */
-.chat-row.narrator .chat-bubble {
-  width: 100%;
-  background: #f9f9f9; /* Light gray background for narrator */
-  color: black;
-  text-align: center;
-}
-
-.left .message-with-image {
-  flex-direction: row; /* Left side messages */
-}
-
-.right .message-with-image {
-  flex-direction: row-reverse; /* Right side messages (for 'me') */
-}
-
-.left .message-text {
-  text-align: left;
-}
-
-.right .message-text {
-  text-align: right;
 }

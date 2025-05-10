@@ -12,7 +12,7 @@
   {
     "id": 3,
     "role": "game",
-    "question": "Quelle est la conduite à tenir face à cette situation ?",
+    "question": "Question 1 : Quelle est la conduite à tenir face à cette situation ?",
     "options": {
       "A": {
         "text": "Rien, c'est une fracture banale après chute",
@@ -52,7 +52,7 @@
   {
     "id": 7,
     "role": "game",
-    "question": "Quel(s) facteur(s) de risque sont à rechercher lors de l'interrogatoire ?",
+    "question": "Question 2 : Quel(s) facteur(s) de risque sont à rechercher lors de l'interrogatoire ?",
     "options": {
       "A": {
         "text": "Une menopause tardive",
@@ -90,7 +90,7 @@
   {
     "id": 10,
     "role": "game",
-    "question": " Quel(s) examen(s) radiologique(s) faut-il prescrire pour évaluer la fragilité osseuse ?",
+    "question": "Question 3 :  Quel(s) examen(s) radiologique(s) faut-il prescrire pour évaluer la fragilité osseuse ?",
     "options": {
       "A": {
         "text": "Radiographie du poignet",
@@ -130,7 +130,7 @@
   {
     "id": 14,
     "role": "game",
-    "question": "À ce stade, le diagnostic d'ostéoporose est-il confirmé ?",
+    "question": "Question 4 : À ce stade, le diagnostic d'ostéoporose est-il confirmé ?",
     "options": {
       "A": {
         "text": "Vrai",
@@ -147,7 +147,7 @@
   {
     "id": 15,
     "role": "game",
-    "question": "Quels examens biologiques prescrire pour compléter le diagnostic?",
+    "question": "Question 5 : Quels examens biologiques prescrire pour compléter le diagnostic?",
     "options": {
       "A": {
         "text": "Bilan renal",
@@ -185,7 +185,7 @@
   {
     "id": 18,
     "role": "game",
-    "question": "Interprétation de ces résultats ?",
+    "question": "Question 6 : Interprétation de ces résultats ?",
     "options": {
       "A": {
         "text": "Calcémie normale",
@@ -215,7 +215,7 @@
   {
     "id": 20,
     "role": "game",
-    "question": "Quel est le diagnostic à retenir ?",
+    "question": "Question 7 : Quel est le diagnostic à retenir ?",
     "options": {
       "A": {
         "text": "Osteopénie",
@@ -245,7 +245,7 @@
   {
     "id": 22,
     "role": "game",
-    "question": "Quelle prise en charge médicamenteuse proposer ?",
+    "question": "Question 8 : Quelle prise en charge médicamenteuse proposer ?",
     "options": {
       "A": {
         "text": "Aucun traitement, simple surveillance",
@@ -280,7 +280,7 @@
   {
     "id": 25,
     "role": "game",
-    "question": "Quelles mesures hygiéno-diététiques recommanderiez-vous?",
+    "question": "Question 9 : Quelles mesures hygiéno-diététiques recommanderiez-vous?",
     "options": {
       "A": {
         "text": "Encourager une activité physique régulière",
@@ -318,7 +318,7 @@
   {
     "id": 27,
     "role": "game",
-    "question": "Quelle surveillance mettre en place?",
+    "question": "Question 10 : Quelle surveillance mettre en place?",
     "options": {
       "A": {
         "text": "DMO à la fin du traitement",
