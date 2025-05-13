@@ -30,8 +30,7 @@
         "text": "D : Lui proposer de faire des exercices de musculation pour renforcer son poignet.",
         "isCorrect": false
       }
-    },
-    "next": 4
+    }
   },
   {
     "id": 4,
@@ -56,26 +55,27 @@
   {
     "id": 8,
     "role": "game",
+    "multipleChoice": true,
     "question": "Question 2 : Quel(s) facteur(s) de risque sont à rechercher lors de l'interrogatoire ?",
     "options": {
       "A": {
-        "text": "Une menopause tardive",
+        "text": "A : Une menopause tardive",
         "isCorrect": false
       },
       "B": {
-        "text": "Une prise prolongée d'AINS",
+        "text": "B : Une prise prolongée d'AINS",
         "isCorrect": false
       },
       "C": {
-        "text": "Une fracture du col fémoral chez la mère",
+        "text": "C : Une fracture du col fémoral chez la mère",
         "isCorrect": true
       },
       "D": {
-        "text": "Un tabagisme actif.",
+        "text": "D : Un tabagisme actif.",
         "isCorrect": true
       },
       "E": {
-        "text": " Une obésité.",
+        "text": "E :  Une obésité.",
         "isCorrect": true
       }
     },
@@ -128,7 +128,7 @@
   {
     "id": 14,
     "role": "narrator",
-    "message": "La patiente revient avec sa DMO : Résultats: T-score-2.5 au rachis lombaire, -2.4 au col fémoral"
+    "message": "La patiente revient avec sa DMO : \n Résultats: T-score-2.5  \n au rachis lombaire, \n -2.4 au col fémoral"
   },
   {
     "id": 15,

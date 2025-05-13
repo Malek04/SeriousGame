@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import scenario from '../file/scenario1.json';
 import { QuestionDialogComponent } from '../questions/questions.component';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 interface GameStep {
   id: number;
@@ -41,7 +42,6 @@ export class ChatComponent implements OnInit {
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/monia.png',
     me: 'assets/doc.png',
-    dr_sami: 'assets/sami.png',
   };
 
   constructor(
@@ -125,13 +125,12 @@ export class ChatComponent implements OnInit {
 
   getOptionFeedback(step: GameStep, optionKey: string): string | null {
     const option = step.options?.[optionKey];
-    if (!option) {
-      console.warn('Option key not found in step:', optionKey, step.options);
-    }
     return option?.feedback ?? null;
   }
 
   openQuestionModal(entry: any): void {
+    this.selectedOptions = {};
+
     const dialogRef = this.dialog.open(QuestionDialogComponent, {
       width: '600px',
       data: entry.data,
@@ -140,34 +139,60 @@ export class ChatComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result && result.correct !== undefined) {
-        const selectedOptionKey = result.selectedOption;
+        const selectedOptionKey = result.selectedOptions[0];
         const step = entry.data;
 
-        console.log('Selected Option Key:', selectedOptionKey);
-        console.log('Step Options:', step.options);
-        console.log('Matched Option:', step.options?.[selectedOptionKey]);
-
-        const feedback = this.getOptionFeedback(step, selectedOptionKey);
-        const isCorrect = result.correct;
+        this.selectedOptions[step.id] = new Set();
+        this.selectedOptions[step.id].add(selectedOptionKey);
 
         this.chatHistory.push({
           type: 'answer',
-          feedback: feedback,
-          correct: isCorrect,
+          feedback: this.getOptionFeedback(step, selectedOptionKey),
+          correct: result.correct,
         });
 
         this.cdRef.detectChanges();
         this.scrollToBottom();
 
         setTimeout(() => {
-          this.selectedOptions[step.id] = new Set();
-          this.pendingQuestion = null;
+          if (result.correct) {
+            this.selectedOptions[step.id] = new Set();
+            this.pendingQuestion = null;
 
-          this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
-          this.playNext();
+            this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
+            this.playNext();
+          } else {
+            this.showRetryAlert();
+          }
         }, 1500);
       }
     });
+  }
+
+  showRetryAlert(): void {
+    Swal.fire({
+      title: 'Vous avez perdu 😞',
+      text: "Voulez-vous réessayer le jeu ou revenir à la page d'accueil ?",
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, réessayer!',
+      cancelButtonText: "Non, revenir à l'accueil!",
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reloadGame();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        window.location.href = '';
+      }
+    });
+  }
+
+  reloadGame(): void {
+    this.currentIndex = 0;
+    this.chatHistory = [];
+    this.selectedOptions = {};
+    this.playNext();
+    window.location.reload();
   }
 
   findIndexById(id: number): number {

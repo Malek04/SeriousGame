@@ -1,53 +1,72 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+export interface QuestionOption {
+  text: string;
+  isCorrect: boolean;
+}
+
+export interface QuestionData {
+  options: { [key: string]: QuestionOption };
+  multipleChoice?: boolean;
+}
+
 @Component({
   selector: 'app-question-dialog',
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.css'],
 })
 export class QuestionDialogComponent {
-  // Utilisé pour suivre les options sélectionnées via checkbox native
   selectedOptions: { [key: string]: boolean } = {};
 
   constructor(
     public dialogRef: MatDialogRef<QuestionDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: QuestionData
   ) {}
 
-  objectKeys(obj: any): string[] {
-    return Object.keys(obj);
+  objectKeys = (obj: any): string[] => (obj ? Object.keys(obj) : []);
+
+  onOptionChange(key: string): void {
+    console.log('Selected option changed:', key, this.selectedOptions[key]);
+  }
+
+  submitAnswer(): void {
+    const selectedKeys = Object.keys(this.selectedOptions).filter(
+      (key) => this.selectedOptions[key] === true
+    );
+
+    this.dialogRef.close({
+      selectedOptions: selectedKeys,
+      correct: this.checkAnswer(selectedKeys),
+    });
   }
 
   hasSelectedOptions(): boolean {
     return Object.values(this.selectedOptions).some((value) => value === true);
   }
 
-  submitAnswer(): void {
-    const correctAnswers = this.objectKeys(this.data.options).filter(
+  checkAnswer(selectedKeys: string[]): boolean {
+    const correctAnswers = Object.keys(this.data.options).filter(
       (key) => this.data.options[key].isCorrect
     );
 
-    const selectedAnswers = this.objectKeys(this.selectedOptions).filter(
-      (key) => this.selectedOptions[key]
-    );
+    if (!this.isMultipleChoice()) {
+      return (
+        selectedKeys.length === 1 && correctAnswers.includes(selectedKeys[0])
+      );
+    }
 
-    const allSelectedCorrect = selectedAnswers.every((answer) =>
-      correctAnswers.includes(answer)
+    return (
+      selectedKeys.every((key) => correctAnswers.includes(key)) &&
+      selectedKeys.length === correctAnswers.length
     );
-    const allCorrectSelected = correctAnswers.every((answer) =>
-      selectedAnswers.includes(answer)
-    );
+  }
 
-    const isCorrect = allSelectedCorrect && allCorrectSelected;
-
-    this.closeDialog(isCorrect);
+  isMultipleChoice(): boolean {
+    return this.data.multipleChoice || false;
   }
 
   closeDialog(isCorrect: boolean): void {
-    this.dialogRef.close({
-      correct: isCorrect,
-      feedback: isCorrect ? 'Bonne réponse!' : 'Mauvaise réponse.',
-    });
+    this.dialogRef.close({ isCorrect });
   }
 }

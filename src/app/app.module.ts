@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RetryModalComponent } from './Scénario/retry-modal/retry-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CardsComponent,
     ChatComponent,
     QuestionDialogComponent,
+    RetryModalComponent,
   ],
   imports: [
     MatDialogModule,

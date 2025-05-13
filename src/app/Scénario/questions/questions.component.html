@@ -12,16 +12,19 @@
     </div>
 
     <form (ngSubmit)="submitAnswer()" #answerForm="ngForm">
-      <div *ngFor="let key of objectKeys(data.options)" class="form-check mb-2">
-        <label class="form-check-label">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            [(ngModel)]="selectedOptions[key]"
-            [name]="key"
-          />
-          {{ data.options[key].text }}
-        </label>
+      <div *ngIf="data?.options">
+        <div *ngFor="let key of objectKeys(data.options)" class="form-check mb-2">
+          <label class="form-check-label">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              [(ngModel)]="selectedOptions[key]"
+              [name]="key"
+              (change)="onOptionChange(key)"
+            />
+            {{ data.options[key].text }}
+          </label>
+        </div>
       </div>
 
       <button
