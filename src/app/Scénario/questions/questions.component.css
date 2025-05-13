@@ -1,0 +1,60 @@
+.mat-dialog-content {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  line-height: 1.6;
+  padding: 10px;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+.checkbox-label {
+  font-size: 1.5rem; /* Adjust size as needed */
+}
+
+
+.mat-radio-group {
+  display: block;
+  margin-bottom: 16px;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
+.mat-radio-button {
+  display: block; 
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+.mat-dialog-content {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  line-height: 1.6;
+  padding: 10px;
+}
+
+.mat-dialog-container {
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.message-text {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  line-height: 1.5;
+  padding: 10px;
+}
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px;
+}
+
+.close-button {
+  font-size: 16px;
+  height: 32px;
+  width: 32px;
+  margin-right: 4px;
+}

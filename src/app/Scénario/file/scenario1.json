@@ -2,7 +2,7 @@
   {
     "id": 1,
     "role": "narrator",
-    "message": "Vous êtes médecin généraliste. Un jour, dans l'ascenseur de votre immeuble, Mme Monia,, votre voisine, âgée de 67 ans, vous interpelle. Elle vient de subir une fracture du poignet gauche après avoir glissé dans sa cuisine. Elle a été plåtrée aux urgences et est rentrée chez elle."
+    "message": "Vous êtes médecin généraliste. Un jour, dans l'ascenseur de votre immeuble, Mme Monia,, votre voisine, âgée de 67 ans, vous interpelle. Elle vient de subir une fracture du poignet gauche après avoir glissé dans sa cuisine. Elle a été plâtrée aux urgences et est rentrée chez elle."
   },
   {
     "id": 2,
@@ -15,25 +15,26 @@
     "question": "Question 1 : Quelle est la conduite à tenir face à cette situation ?",
     "options": {
       "A": {
-        "text": "Rien, c'est une fracture banale après chute",
+        "text": "A : Rien, c'est une fracture banale après chute",
         "isCorrect": false
       },
       "B": {
-        "text": "L'inviter à venir consulter devant la suspicion d'une fracture ostéoporotique.",
+        "text": "B : L'inviter à venir consulter devant la suspicion d'une fracture ostéoporotique.",
         "isCorrect": true,
         "feedback": "Toute fracture survenue après un traumatisme minime chez une personne âgée doit faire suspecter une ostéoporose."
       },
       "C": {
-        "text": "Lui proposer une radio de contrôle dans un mois.",
+        "text": "C : Lui proposer une radio de contrôle dans un mois.",
         "isCorrect": false
       },
       "D": {
-        "text": "Lui proposer de faire des exercices de musculation pour renforcer son poignet.",
+        "text": "D : Lui proposer de faire des exercices de musculation pour renforcer son poignet.",
         "isCorrect": false
       }
     },
     "next": 4
   },
+  
  {
     "id": 4,
     "role": "mme_monia",

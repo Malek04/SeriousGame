@@ -6,8 +6,9 @@ import {
   ElementRef,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import Swal from 'sweetalert2';
 import scenario from '../file/scenario1.json';
+import { QuestionDialogComponent } from '../questions/questions.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface GameStep {
   id: number;
@@ -35,6 +36,7 @@ export class ChatComponent implements OnInit {
   currentIndex = 0;
   chatHistory: any[] = [];
   selectedOptions: { [key: number]: Set<string> } = {};
+  pendingQuestion: any = null;
 
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/monia.png',
@@ -42,7 +44,11 @@ export class ChatComponent implements OnInit {
     dr_sami: 'assets/sami.png',
   };
 
-  constructor(private http: HttpClient, private cdRef: ChangeDetectorRef) {}
+  constructor(
+    private http: HttpClient,
+    private cdRef: ChangeDetectorRef,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.scenario = scenario as GameStep[];
@@ -61,9 +67,8 @@ export class ChatComponent implements OnInit {
     if (!step) return;
 
     if (step.role === 'game') {
-      this.chatHistory.push({ type: 'question', data: step });
+      this.pendingQuestion = { data: step };
       this.cdRef.detectChanges();
-      this.scrollToBottom();
       return;
     }
 
@@ -75,11 +80,12 @@ export class ChatComponent implements OnInit {
       partial: true,
       imageUrl: this.profileImages[step.role],
     };
+
     this.chatHistory.push(message);
     this.cdRef.detectChanges();
     this.scrollToBottom();
 
-    await new Promise((res) => setTimeout(res, 300)); // Short delay
+    await new Promise((res) => setTimeout(res, 300));
 
     if (step.role === 'narrator') {
       await this.revealMessage(message);
@@ -91,7 +97,7 @@ export class ChatComponent implements OnInit {
     }
 
     this.currentIndex++;
-    setTimeout(() => this.playNext(), 500); // Delay to pace dialogue
+    setTimeout(() => this.playNext(), 500);
   }
 
   revealMessage(message: any): Promise<void> {
@@ -113,69 +119,58 @@ export class ChatComponent implements OnInit {
           this.cdRef.detectChanges();
           this.scrollToBottom();
         }
-      }, 80); // Typing speed
+      }, 200);
     });
   }
 
-  toggleOption(questionId: number, key: string): void {
-    if (!this.selectedOptions[questionId]) {
-      this.selectedOptions[questionId] = new Set<string>();
+  getOptionFeedback(step: GameStep, optionKey: string): string | null {
+    const option = step.options?.[optionKey];
+    if (!option) {
+      console.warn('Option key not found in step:', optionKey, step.options);
     }
-
-    const optionsSet = this.selectedOptions[questionId];
-    if (optionsSet.has(key)) {
-      optionsSet.delete(key);
-    } else {
-      optionsSet.add(key);
-    }
+    return option?.feedback ?? null;
   }
 
-  submitMultipleAnswers(): void {
-    const step = this.scenario[this.currentIndex];
-    if (step.options) {
-      const selectedAnswers = Array.from(this.selectedOptions[step.id] || []);
-      const feedbacks = selectedAnswers
-        .map((answer) => step.options![answer]?.feedback)
-        .filter(Boolean);
-      const allCorrect = selectedAnswers.every(
-        (answer) => step.options![answer]?.isCorrect
-      );
+  openQuestionModal(entry: any): void {
+    const dialogRef = this.dialog.open(QuestionDialogComponent, {
+      width: '600px',
+      data: entry.data,
+      disableClose: true,
+    });
 
-      if (!allCorrect) {
-        Swal.fire({
-          title: 'Vous avez perdu',
-          text: 'Réessayez!',
-          icon: 'error',
-          confirmButtonText: 'Réessayer',
-        }).then(() => {
-          location.reload();
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result && result.correct !== undefined) {
+        const selectedOptionKey = result.selectedOption;
+        const step = entry.data;
+
+        console.log('Selected Option Key:', selectedOptionKey);
+        console.log('Step Options:', step.options);
+        console.log('Matched Option:', step.options?.[selectedOptionKey]);
+
+        const feedback = this.getOptionFeedback(step, selectedOptionKey);
+        const isCorrect = result.correct;
+
+        this.chatHistory.push({
+          type: 'answer',
+          feedback: feedback,
+          correct: isCorrect,
         });
-        return;
+
+        this.cdRef.detectChanges();
+        this.scrollToBottom();
+
+        setTimeout(() => {
+          this.selectedOptions[step.id] = new Set();
+          this.pendingQuestion = null;
+
+          this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
+          this.playNext();
+        }, 1500);
       }
-
-      this.chatHistory.push({
-        type: 'answer',
-        feedback: feedbacks.join(', '),
-        correct: allCorrect,
-      });
-
-      setTimeout(() => {
-        this.selectedOptions[step.id] = new Set();
-        this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
-        this.playNext();
-      }, 2000);
-    }
+    });
   }
 
   findIndexById(id: number): number {
     return this.scenario.findIndex((step) => step.id === id);
-  }
-
-  objectKeys(obj: any): string[] {
-    return Object.keys(obj);
-  }
-
-  isOptionSelected(id: number): boolean {
-    return (this.selectedOptions[id]?.size || 0) > 0;
   }
 }

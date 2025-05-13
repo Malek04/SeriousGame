@@ -65,6 +65,19 @@
   justify-content: center;
   width: 100%;
 }
+.fixed-question {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1976d2;
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+}
 
 .chat-row.narrator .chat-bubble {
   width: 100%;
