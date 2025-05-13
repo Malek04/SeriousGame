@@ -1,74 +1,115 @@
 <div class="chat-container">
+  <!-- Fixed Header with Progress Bar -->
   <div class="header">
     <h2>Cas Clinique : Fracture & Ostéoporose</h2>
     <div class="progress-bar">
-      <div class="progress" [style.width.%]="(currentIndex / scenario.length) * 100">
-        {{ (currentIndex / scenario.length) * 100 | number: '1.0-0' }}%
+      <div
+        class="progress"
+        [style.width.%]="(currentIndex / scenario.length) * 100"
+      >
+        {{ (currentIndex / scenario.length) * 100 | number : "1.0-0" }}%
       </div>
     </div>
   </div>
 
-  <div *ngFor="let entry of chatHistory" class="chat-row"
-       [ngClass]="{
-         'right': entry.from === 'me',
-         'narrator': entry.from === 'narrator',
-         'left': entry.from !== 'me' && entry.from !== 'narrator'
-       }">
-
-    <!-- Narrator -->
-    <div *ngIf="entry.type === 'message' && entry.from === 'narrator'" class="chat-bubble narrator">
-      <div class="message-text narrator-text">
-        <span>{{ entry.displayedText }}</span>
+  <!-- Scrollable Chat Section -->
+  <div class="chat-scroll" #chatBox>
+    <div
+      *ngFor="let entry of chatHistory"
+      class="chat-row"
+      [ngClass]="{
+        right: entry.from === 'me',
+        narrator: entry.from === 'narrator',
+        left: entry.from !== 'me' && entry.from !== 'narrator'
+      }"
+    >
+      <!-- Narrator -->
+      <div
+        *ngIf="entry.type === 'message' && entry.from === 'narrator'"
+        class="chat-bubble narrator"
+      >
+        <div class="message-text narrator-text">
+          <span>{{ entry.displayedText }}</span>
+        </div>
       </div>
-    </div>
 
-    <!-- Messages -->
-    <ng-container *ngIf="entry.type === 'message' && entry.from !== 'narrator'">
-      <div class="message-container" [ngClass]="entry.from === 'me' ? 'me' : 'other'">
-        <div class="speaker-name">{{ entry.from | titlecase }}</div>
-        <div class="message-wrapper">
-          <img [src]="entry.imageUrl" alt="Profile Image" class="profile-image" />
-          <div class="chat-bubble"
-               [ngClass]="{
-                 'madame-monia': entry.from === 'mme_monia',
-                 'me': entry.from === 'me',
-                 'doctor': entry.from === 'dr_sami'
-               }">
-            <div class="message-text"
-                 [ngClass]="{
-                   'typing-switch': entry.from === 'mme_monia' || entry.from === 'me'
-                 }">
-              <span *ngIf="entry.partial" class="dots">...</span>
-              <span *ngIf="!entry.partial" class="real-message">{{ entry.text }}</span>
+      <ng-container
+        *ngIf="entry.type === 'message' && entry.from !== 'narrator'"
+      >
+        <div
+          class="message-container"
+          [ngClass]="entry.from === 'me' ? 'me' : 'other'"
+        >
+          <div class="speaker-name">{{ entry.from | titlecase }}</div>
+          <div class="message-wrapper">
+            <img
+              [src]="entry.imageUrl"
+              alt="Profile Image"
+              class="profile-image"
+            />
+            <div
+              class="chat-bubble"
+              [ngClass]="{
+                'madame-monia': entry.from === 'mme_monia',
+                me: entry.from === 'me',
+                doctor: entry.from === 'dr_sami'
+              }"
+            >
+              <div
+                class="message-text"
+                [ngClass]="{
+                  'typing-switch':
+                    entry.from === 'mme_monia' || entry.from === 'me'
+                }"
+              >
+                <span *ngIf="entry.partial" class="dots">...</span>
+                <span *ngIf="!entry.partial" class="real-message">{{
+                  entry.text
+                }}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </ng-container>
+      </ng-container>
 
-    <!-- Question -->
-    <div *ngIf="entry.type === 'question'" class="chat-bubble game-question">
-      <p><strong>{{ entry.data.question }}</strong></p>
-      <div class="options">
-        <button *ngFor="let key of objectKeys(entry.data.options)"
-                mat-raised-button
-                [color]="selectedOptions[entry.data.id] && selectedOptions[entry.data.id].has(key) ? 'accent' : 'primary'"
-                (click)="toggleOption(entry.data.id, key)">
-          {{ key }}. {{ entry.data.options[key].text }}
+      <!-- Question -->
+      <div *ngIf="entry.type === 'question'" class="chat-bubble game-question">
+        <p>
+          <strong>{{ entry.data.question }}</strong>
+        </p>
+        <div class="options">
+          <button
+            *ngFor="let key of objectKeys(entry.data.options)"
+            mat-raised-button
+            [color]="
+              selectedOptions[entry.data.id] &&
+              selectedOptions[entry.data.id].has(key)
+                ? 'accent'
+                : 'primary'
+            "
+            (click)="toggleOption(entry.data.id, key)"
+          >
+            {{ key }}. {{ entry.data.options[key].text }}
+          </button>
+        </div>
+        <button
+          *ngIf="isOptionSelected(entry.data.id)"
+          mat-raised-button
+          color="warn"
+          (click)="submitMultipleAnswers()"
+        >
+          Valider
         </button>
       </div>
-      <button *ngIf="isOptionSelected(entry.data.id)"
-              mat-raised-button
-              color="warn"
-              (click)="submitMultipleAnswers()">
-        Valider
-      </button>
-    </div>
 
-    <!-- Feedback -->
-    <div *ngIf="entry.type === 'answer'" class="chat-bubble"
-         [ngClass]="{ 'correct': entry.correct, 'incorrect': !entry.correct }">
-      <em>Feedback: {{ entry.feedback || 'Correct' }}</em>
+      <!-- Feedback -->
+      <div
+        *ngIf="entry.type === 'answer'"
+        class="chat-bubble"
+        [ngClass]="{ correct: entry.correct, incorrect: !entry.correct }"
+      >
+        <em>Feedback: {{ entry.feedback || "Correct" }}</em>
+      </div>
     </div>
   </div>
 </div>

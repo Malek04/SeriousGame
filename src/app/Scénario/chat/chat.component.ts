@@ -1,7 +1,13 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import scenario from '../file/scenario1.json';
 import Swal from 'sweetalert2';
+import scenario from '../file/scenario1.json';
 
 interface GameStep {
   id: number;
@@ -24,17 +30,16 @@ interface GameStep {
   styleUrls: ['./chat.component.css'],
 })
 export class ChatComponent implements OnInit {
+  @ViewChild('chatBox') chatBox!: ElementRef;
   scenario: GameStep[] = [];
   currentIndex = 0;
   chatHistory: any[] = [];
-  selectedOption: string | null = null;
-  showFeedback = false;
-  feedbackMessage = '';
   selectedOptions: { [key: number]: Set<string> } = {};
 
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/monia.png',
     me: 'assets/doc.png',
+    dr_sami: 'assets/sami.png',
   };
 
   constructor(private http: HttpClient, private cdRef: ChangeDetectorRef) {}
@@ -44,54 +49,72 @@ export class ChatComponent implements OnInit {
     this.playNext();
   }
 
+  scrollToBottom(): void {
+    try {
+      this.chatBox.nativeElement.scrollTop =
+        this.chatBox.nativeElement.scrollHeight;
+    } catch (err) {}
+  }
+
   async playNext(): Promise<void> {
     const step = this.scenario[this.currentIndex];
     if (!step) return;
 
     if (step.role === 'game') {
       this.chatHistory.push({ type: 'question', data: step });
-    } else {
-      const message = {
-        type: 'message',
-        from: step.role,
-        text: step.message ?? '',
-        displayedText: '', // New property to store progressively revealed text
-        partial: true,
-        imageUrl: this.profileImages[step.role],
-      };
-      this.chatHistory.push(message);
-
-      // Wait before simulating typing (show typing dots)
-      await new Promise((res) => setTimeout(res, 1000));
-
-      // Reveal the message word by word
-      if (step.role === 'narrator') {
-        this.revealMessage(message);
-      } else {
-        message.text = step.message ?? '';
-        message.partial = false;
-      }
-
       this.cdRef.detectChanges();
-      this.currentIndex++;
-      setTimeout(() => this.playNext(), 1000);
+      this.scrollToBottom();
+      return;
     }
+
+    const message = {
+      type: 'message',
+      from: step.role,
+      text: step.message ?? '',
+      displayedText: '',
+      partial: true,
+      imageUrl: this.profileImages[step.role],
+    };
+    this.chatHistory.push(message);
+    this.cdRef.detectChanges();
+    this.scrollToBottom();
+
+    await new Promise((res) => setTimeout(res, 300)); // Short delay
+
+    if (step.role === 'narrator') {
+      await this.revealMessage(message);
+    } else {
+      message.partial = false;
+      message.displayedText = message.text;
+      this.cdRef.detectChanges();
+      this.scrollToBottom();
+    }
+
+    this.currentIndex++;
+    setTimeout(() => this.playNext(), 500); // Delay to pace dialogue
   }
 
-  // Reveal the narrator's message word by word
-  revealMessage(message: any): void {
-    const words = message.text.split(' ');
-    let index = 0;
+  revealMessage(message: any): Promise<void> {
+    return new Promise((resolve) => {
+      const words = message.text.split(' ');
+      let index = 0;
 
-    const interval = setInterval(() => {
-      message.displayedText += words[index] + ' ';
-      index++;
+      const interval = setInterval(() => {
+        message.displayedText += words[index] + ' ';
+        index++;
 
-      if (index === words.length) {
-        clearInterval(interval);
-        message.partial = false; // No more typing dots
-      }
-    }, 300); // Adjust this delay for faster/slower typing
+        if (index === words.length) {
+          clearInterval(interval);
+          message.partial = false;
+          this.cdRef.detectChanges();
+          this.scrollToBottom();
+          resolve();
+        } else {
+          this.cdRef.detectChanges();
+          this.scrollToBottom();
+        }
+      }, 80); // Typing speed
+    });
   }
 
   toggleOption(questionId: number, key: string): void {
@@ -140,7 +163,7 @@ export class ChatComponent implements OnInit {
         this.selectedOptions[step.id] = new Set();
         this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
         this.playNext();
-      }, 3000);
+      }, 2000);
     }
   }
 
