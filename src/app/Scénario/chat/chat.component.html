@@ -18,7 +18,7 @@
     <!-- Narrator -->
     <div *ngIf="entry.type === 'message' && entry.from === 'narrator'" class="chat-bubble narrator">
       <div class="message-text narrator-text">
-        <span [innerHTML]="entry.text"></span>
+        <span>{{ entry.displayedText }}</span>
       </div>
     </div>
 

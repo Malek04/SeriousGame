@@ -218,3 +218,28 @@
     opacity: 1;
   }
 }
+
+.typing-switch .dots {
+  display: inline-block;
+  animation: fadeOutDots 0s forwards;
+  animation-delay: 1.5s;
+}
+
+.typing-switch .real-message {
+  display: inline-block;
+  opacity: 0;
+  animation: showRealMessage 0s forwards;
+  animation-delay: 0s;
+}
+
+@keyframes fadeOutDots {
+  to {
+    display: none;
+  }
+}
+
+@keyframes showRealMessage {
+  to {
+    opacity: 1;
+  }
+}

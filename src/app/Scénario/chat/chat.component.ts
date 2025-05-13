@@ -54,7 +54,8 @@ export class ChatComponent implements OnInit {
       const message = {
         type: 'message',
         from: step.role,
-        text: '',
+        text: step.message ?? '',
+        displayedText: '', // New property to store progressively revealed text
         partial: true,
         imageUrl: this.profileImages[step.role],
       };
@@ -63,15 +64,34 @@ export class ChatComponent implements OnInit {
       // Wait before simulating typing (show typing dots)
       await new Promise((res) => setTimeout(res, 1000));
 
-      // Instantly show full message after delay
-      message.text = step.message ?? '';
-      message.partial = false;
+      // Reveal the message word by word
+      if (step.role === 'narrator') {
+        this.revealMessage(message);
+      } else {
+        message.text = step.message ?? '';
+        message.partial = false;
+      }
 
       this.cdRef.detectChanges();
-
       this.currentIndex++;
       setTimeout(() => this.playNext(), 1000);
     }
+  }
+
+  // Reveal the narrator's message word by word
+  revealMessage(message: any): void {
+    const words = message.text.split(' ');
+    let index = 0;
+
+    const interval = setInterval(() => {
+      message.displayedText += words[index] + ' ';
+      index++;
+
+      if (index === words.length) {
+        clearInterval(interval);
+        message.partial = false; // No more typing dots
+      }
+    }, 300); // Adjust this delay for faster/slower typing
   }
 
   toggleOption(questionId: number, key: string): void {
