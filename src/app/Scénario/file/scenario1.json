@@ -20,8 +20,7 @@
       },
       "B": {
         "text": "B : L'inviter à venir consulter devant la suspicion d'une fracture ostéoporotique.",
-        "isCorrect": true,
-        "feedback": "Toute fracture survenue après un traumatisme minime chez une personne âgée doit faire suspecter une ostéoporose."
+        "isCorrect": true
       },
       "C": {
         "text": "C : Lui proposer une radio de contrôle dans un mois.",
@@ -34,24 +33,28 @@
     },
     "next": 4
   },
-  
- {
+  {
     "id": 4,
+    "role": "me",
+    "message": "Toute fracture survenue après un traumatisme minime chez une personne âgée doit faire suspecter une ostéoporose."
+  },
+  {
+    "id": 5,
     "role": "mme_monia",
     "message": "C'est pas grand chose hein? Ça doit arriver à tout le monde de tomber... non?"
   },
   {
-    "id": 5,
+    "id": 6,
     "role": "me",
     "message": "Vous Ne vous inquiétez pas madame Monia. Venez moi voir et on va faire le point ensembles"
   },
   {
-    "id": 6,
+    "id": 7,
     "role": "narrator",
     "message": "Elle accepte de venir consulter. Vous débutez votre évaluation clinique."
   },
   {
-    "id": 7,
+    "id": 8,
     "role": "game",
     "question": "Question 2 : Quel(s) facteur(s) de risque sont à rechercher lors de l'interrogatoire ?",
     "options": {
@@ -76,20 +79,20 @@
         "isCorrect": true
       }
     },
-    "next": 8
+    "next": 9
   },
   {
-    "id": 8,
+    "id": 9,
     "role": "mme_monia",
     "message": "Ma mère s'était cassé la hanche... mais elle avait 85 ans ! Et moi je bouge tout le temps et je fais toujours mes cours de danse."
   },
   {
-    "id": 9,
+    "id": 10,
     "role": "narrator",
     "message": "Vous lui prescrivez des examens complémentaires."
   },
   {
-    "id": 10,
+    "id": 11,
     "role": "game",
     "question": "Question 3 :  Quel(s) examen(s) radiologique(s) faut-il prescrire pour évaluer la fragilité osseuse ?",
     "options": {
@@ -98,9 +101,8 @@
         "isCorrect": false
       },
       "B": {
-        "text": "LDensitométrie osseuse (DMO)",
-        "isCorrect": true,
-        "feedback": "La DMO est l'examen de référence pour quantifier la densité mínérale osseuse."
+        "text": "Densitométrie osseuse (DMO)",
+        "isCorrect": true
       },
       "C": {
         "text": "Radiographie du bassin.",
@@ -111,25 +113,30 @@
         "isCorrect": false
       }
     },
-    "next": 11
-  },
-  {
-    "id": 11,
-    "role": "mme_monia",
-    "message": "Une densito... quoi ? J'ai pas de densité moi, j'ai du peps!"
+    "next": 12
   },
   {
     "id": 12,
-    "role": "narrator",
-    "message": "La patiente revient avec sa DMO : Résultats: T-score-2.5 au rachis lombaire, -2.4 au col fémoral"
+    "role": "me",
+    "message": "La DMO est l'examen de référence pour quantifier la densité mínérale osseuse."
   },
   {
     "id": 13,
     "role": "mme_monia",
-    "message": "Alors docteur, vous allez me dire que j'ai des os en mousse maintenant ?"
+    "message": "Une densito... quoi ? J'ai pas de densité moi, j'ai du peps!"
   },
   {
     "id": 14,
+    "role": "narrator",
+    "message": "La patiente revient avec sa DMO : Résultats: T-score-2.5 au rachis lombaire, -2.4 au col fémoral"
+  },
+  {
+    "id": 15,
+    "role": "mme_monia",
+    "message": "Alors docteur, vous allez me dire que j'ai des os en mousse maintenant ?"
+  },
+  {
+    "id": 16,
     "role": "game",
     "question": "Question 4 : À ce stade, le diagnostic d'ostéoporose est-il confirmé ?",
     "options": {
@@ -139,14 +146,18 @@
       },
       "B": {
         "text": "Faux",
-        "isCorrect": true,
-        "feedback": "Une DMO avec T-score ≤ -2,5 évoque une ostéopathie raréfiante, mais le diagnostic d'ostéoporose nécessite de faire un bilan étiologique."
+        "isCorrect": true
       }
     },
-    "next": 15
+    "next": 17
   },
   {
-    "id": 15,
+    "id": 17,
+    "role": "me",
+    "message": "Une DMO avec T-score ≤ -2,5 évoque une ostéopathie raréfiante, mais le diagnostic d'ostéoporose nécessite de faire un bilan étiologique."
+  },
+  {
+    "id": 18,
     "role": "game",
     "question": "Question 5 : Quels examens biologiques prescrire pour compléter le diagnostic?",
     "options": {
@@ -171,27 +182,26 @@
         "isCorrect": false
       }
     },
-    "next": 16
+    "next": 19
   },
   {
-    "id": 16,
+    "id": 19,
     "role": "mme_monia",
     "message": "Bon, si je dois faire une prise de sang, vous me promettez un bonbon après?."
   },
   {
-    "id": 17,
+    "id": 20,
     "role": "narrator",
     "message": "Résultats du bilan biologique \n Calcémie: 21 mmol/l. \nThosphorêtnie: L1 mmol/L. \nPAL: 140 UL/L \nCreatinine: 70 µmol/L \n Albumine: 32 g/L \n EPP: Pas de pic monoclorual"
   },
   {
-    "id": 18,
+    "id": 21,
     "role": "game",
     "question": "Question 6 : Interprétation de ces résultats ?",
     "options": {
       "A": {
         "text": "Calcémie normale",
-        "isCorrect": true,
-        "feedback": "La calcémie corrigée (2.3 mmol/L) est normale. Ce bilan élimine les autres causes d'ostéopathies raréfiantes (IRC, myélome, ostéomalacie...)."
+        "isCorrect": true
       },
       "B": {
         "text": "Hypocalcemie",
@@ -206,15 +216,20 @@
         "isCorrect": false
       }
     },
-    "next": 19
+    "next": 22
   },
   {
-    "id": 19,
+    "id": 22,
+    "role": "me",
+    "message": "La calcémie corrigée (2.3 mmol/L) est normale. Ce bilan élimine les autres causes d'ostéopathies raréfiantes (IRC, myélome, ostéomalacie...)."
+  },
+  {
+    "id": 23,
     "role": "mme_monia",
     "message": "Ah ben voilà, je suis normale finalement! Je vous l'avais dit que c'était rien de grave!"
   },
   {
-    "id": 20,
+    "id": 24,
     "role": "game",
     "question": "Question 7 : Quel est le diagnostic à retenir ?",
     "options": {
@@ -224,8 +239,7 @@
       },
       "B": {
         "text": "Ostéoporose sévére",
-        "isCorrect": true,
-        "feedback":"Une fracture de fragilité avec T-score s-2,5 ostéoporose sévère (OMS)."
+        "isCorrect": true
       },
       "C": {
         "text": "Ostéoporose",
@@ -236,15 +250,25 @@
         "isCorrect": false
       }
     },
-    "next": 21
+    "next": 25
   },
   {
-    "id": 21,
+    "id": 25,
+    "role": "me",
+    "message": "Une fracture de fragilité avec T-score s-2,5 ostéoporose sévère (OMS)."
+  },
+  {
+    "id": 26,
+    "role": "mme_monia",
+    "message": "Ostéoporose sévère ? Vous êtes sûr que ce n'est pas un peu exagéré ?"
+  },
+  {
+    "id": 27,
     "role": "mme_monia",
     "message": "Ostéoporose sévère ? Vous êtes sûr que vous ne confondez pas avec ma voisine du 3ème étage?"
   },
   {
-    "id": 22,
+    "id": 28,
     "role": "game",
     "question": "Question 8 : Quelle prise en charge médicamenteuse proposer ?",
     "options": {
@@ -258,28 +282,37 @@
       },
       "C": {
         "text": "Bisphosphonates calcium vitamine D",
-        "isCorrect": true,
-        "feedback": "Les bisphosphonates sont le traitement de première intention en cas d'ostéoporose sévére."
+        "isCorrect": true
       },
       "D": {
         "text": "Teriparatide",
         "isCorrect": false
       }
     },
-    "next": 23
+    "next": 29
   },
   {
-    "id": 23,
+    "id": 29,
+    "role": "me",
+    "message": "Les bisphosphonates sont le traitement de première intention en cas d'ostéoporose sévére."
+  },
+  {
+    "id": 30,
+    "role": "mme_monia",
+    "message": "Bisphosphonates ? C'est pas un médicament pour les dinosaures ça ?"
+  },
+  {
+    "id": 31,
     "role": "mme_monia",
     "message": "Des bisphos-machins ? Vous êtes sûr que ce n'est pas pour les dinosaures, ce nom-là?"
   },
   {
-    "id": 24,
+    "id": 32,
     "role": "mme_monia",
     "message": "Sinon, ya-t-il autre chose que je puisse faire pour éviter une autre fracture, docteur?"
   },
   {
-    "id": 25,
+    "id": 33,
     "role": "game",
     "question": "Question 9 : Quelles mesures hygiéno-diététiques recommanderiez-vous?",
     "options": {
@@ -304,32 +337,30 @@
         "isCorrect": true
       }
     },
-    "next": 26
+    "next": 34
   },
   {
-    "id": 26,
+    "id": 34,
     "role": "mme_monia",
     "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur ?"
   },
   {
-    "id": 27,
+    "id": 35,
     "role": "mme_monia",
     "message": "Je vais devoir repasser des examens ? Si vous venez avec des croissants, je veux bien !"
   },
   {
-    "id": 27,
+    "id": 36,
     "role": "game",
     "question": "Question 10 : Quelle surveillance mettre en place?",
     "options": {
       "A": {
         "text": "DMO à la fin du traitement",
-        "isCorrect": true,
-        "feedback":"La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+        "isCorrect": true
       },
       "B": {
         "text": "DMO tous les 2 à 3 ans",
-        "isCorrect": true,
-        "feedback":"La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+        "isCorrect": true
       },
       "C": {
         "text": "Dosage sanguin du traitement pour vérifier l'observance",
@@ -337,22 +368,27 @@
       },
       "D": {
         "text": "Mesure de la taille",
-        "isCorrect": true,
-        "feedback":"La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+        "isCorrect": true
       },
       "E": {
         "text": "Non ce n'est pas nécessaire",
         "isCorrect": false
       }
     },
-    "next": 28
-  },{
-    "id": 29,
+    "next": 37
+  },
+  {
+    "id":37,
+    "role" : "me",
+    "message" : "La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+  },
+  {
+    "id": 38,
     "role": "mme_monia",
     "message": "Merci docteur Grâce à vous, je vais pouvoir danser encore longtemps... mais avec des chaussures antidérapantes cette fois!"
   },
   {
-    "id": 30,
+    "id": 39,
     "role": "fin du scénario - Synthese",
     "message": "Vous avez:\nIdentifié une fracture de fragilité\nRéalisé les explorations nécessaires (DMO + bilan)\nPosé le diagnostic d'ostéoporose sévère\nMis en place un traitement adapté\nConseillé les bonnes mesures de prévention\nOrganisé une surveillance à long terme\n"
   }

@@ -33,7 +33,6 @@
   transition: width 0.3s ease-in-out;
 }
 
-/* Scrollable chat */
 .chat-scroll {
   flex-grow: 1;
   overflow-y: auto;
@@ -60,11 +59,12 @@
   justify-content: flex-end;
 }
 
-/* Narrator Message */
 .chat-row.narrator {
   justify-content: center;
   width: 100%;
+  margin: 25px  0;
 }
+
 .fixed-question {
   position: fixed;
   bottom: 0;
@@ -84,12 +84,14 @@
   max-width: 100%;
   background-color: #f0f0f0;
   color: #333;
+  margin-bottom: 20px;
   text-align: center;
-  padding: 12px 20px;
+  padding: 12px 20px 5px 20px; 
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-style: italic;
 }
+
 
 .narrator-text {
   text-align: center;
@@ -98,6 +100,7 @@
 
 .message-text.narrator-text {
   width: 100%;
+  margin-bottom: 20px; 
   word-wrap: break-word;
   text-align: center;
 }
@@ -132,7 +135,7 @@
 
 .chat-bubble {
   max-width: 70%;
-  padding: 10px 15px;
+  padding: 12px 20px;
   border-radius: 20px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -141,7 +144,7 @@
   color: white;
   opacity: 0;
   animation: fadeIn 0.4s ease forwards;
-  margin-top: 5px;
+  margin-bottom: 10px; 
 }
 
 .chat-bubble .message-text {
@@ -156,18 +159,16 @@
   background-color: #28a745;
 }
 
-/* 🟢 Removed background for user messages */
 .chat-bubble.me {
   background-color: #28a745;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   color: #ffffff;
   border: none;
-  padding: 0;
-  margin-top: 5px;
-  max-width: 70%;
   padding: 10px 15px;
+  max-width: 70%;
   border-radius: 20px;
   animation: fadeIn 0.4s ease forwards;
+  margin-bottom: 10px;
 }
 
 .game-question {

@@ -1,22 +1,36 @@
-<div class="modal-header">
-  <button type="button" class="close-button" (click)="dialogRef.close()" aria-label="Fermer">✕</button>
-</div>
-
-<div class="modal-content">
-  <form (ngSubmit)="submitAnswer()" #answerForm="ngForm">
-    <div *ngFor="let key of objectKeys(data.options)">
-      <label>
-        <input
-          type="checkbox"
-          [(ngModel)]="selectedOptions[key]"
-          [name]="key"
-        />
-        {{ data.options[key].text }}
-      </label>
+<div class="mat-dialog-container p-0">
+  <div class="modal-content bg-light p-4 rounded shadow-sm">
+    <div class="modal-header">
+      <button
+        type="button"
+        class="close-button"
+        (click)="dialogRef.close()"
+        aria-label="Fermer"
+      >
+        ✕
+      </button>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-3" [disabled]="!hasSelectedOptions()">
-      Valider
-    </button>
-  </form>
+    <form (ngSubmit)="submitAnswer()" #answerForm="ngForm">
+      <div *ngFor="let key of objectKeys(data.options)" class="form-check mb-2">
+        <label class="form-check-label">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [(ngModel)]="selectedOptions[key]"
+            [name]="key"
+          />
+          {{ data.options[key].text }}
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100 mt-3"
+        [disabled]="!hasSelectedOptions()"
+      >
+        Valider
+      </button>
+    </form>
+  </div>
 </div>
