@@ -1,0 +1,39 @@
+<div class="mat-dialog-container p-0">
+  <div class="modal-content bg-light p-4 rounded shadow-sm">
+    <div class="modal-header">
+      <button
+        type="button"
+        class="close-button"
+        (click)="dialogRef.close()"
+        aria-label="Fermer"
+      >
+        ✕
+      </button>
+    </div>
+
+    <form (ngSubmit)="submitAnswer()" #answerForm="ngForm">
+      <div *ngIf="data?.options">
+        <div *ngFor="let key of objectKeys(data.options)" class="form-check mb-2">
+          <label class="form-check-label">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              [(ngModel)]="selectedOptions[key]"
+              [name]="key"
+              (change)="onOptionChange(key)"
+            />
+            {{ data.options[key].text }}
+          </label>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100 mt-3"
+        [disabled]="!hasSelectedOptions()"
+      >
+        Valider
+      </button>
+    </form>
+  </div>
+</div>
