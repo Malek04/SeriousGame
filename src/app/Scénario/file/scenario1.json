@@ -2,7 +2,7 @@
   {
     "id": 1,
     "role": "narrator",
-    "message": "Vous êtes médecin généraliste. Un jour, dans l'ascenseur de votre immeuble, Mme Monia,, votre voisine, âgée de 67 ans, vous interpelle. Elle vient de subir une fracture du poignet gauche après avoir glissé dans sa cuisine. Elle a été plâtrée aux urgences et est rentrée chez elle."
+    "message": "Vous êtes médecin généraliste. Un jour, dans l'ascenseur de votre immeuble, Mme Monia, votre voisine, âgée de 67 ans, vous interpelle. Elle vient de subir une fracture du poignet gauche après avoir glissé dans sa cuisine. Elle a été plâtrée aux urgences et est rentrée chez elle."
   },
   {
     "id": 2,
@@ -97,19 +97,23 @@
     "question": "Question 3 :  Quel(s) examen(s) radiologique(s) faut-il prescrire pour évaluer la fragilité osseuse ?",
     "options": {
       "A": {
-        "text": "Radiographie du poignet",
+        "text": "A : Radiographie du poignet",
         "isCorrect": false
       },
       "B": {
-        "text": "Densitométrie osseuse (DMO)",
+        "text": "B : Densitométrie osseuse (DMO)",
         "isCorrect": true
       },
       "C": {
-        "text": "Radiographie du bassin.",
+        "text": "C : Radiographie du bassin.",
         "isCorrect": false
       },
       "D": {
-        "text": "Aucun examen, le diagnostic est clinique",
+        "text": "D : Scintigrahie osseuse.",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : Aucun examen, le diagnostic est clinique",
         "isCorrect": false
       }
     },
@@ -128,7 +132,7 @@
   {
     "id": 14,
     "role": "narrator",
-    "message": "La patiente revient avec sa DMO : \n Résultats: T-score-2.5  \n au rachis lombaire, \n -2.4 au col fémoral"
+    "message": "La patiente revient avec sa DMO : \n Résultats: T-score-2.5 au rachis lombaire, \n -2.4 au col fémoral"
   },
   {
     "id": 15,
@@ -141,11 +145,11 @@
     "question": "Question 4 : À ce stade, le diagnostic d'ostéoporose est-il confirmé ?",
     "options": {
       "A": {
-        "text": "Vrai",
+        "text": "A : Vrai",
         "isCorrect": false
       },
       "B": {
-        "text": "Faux",
+        "text": "B : Faux",
         "isCorrect": true
       }
     },
@@ -159,26 +163,27 @@
   {
     "id": 18,
     "role": "game",
+    "multipleChoice": true,
     "question": "Question 5 : Quels examens biologiques prescrire pour compléter le diagnostic?",
     "options": {
       "A": {
-        "text": "Bilan renal",
+        "text": "A : Bilan renal",
         "isCorrect": true
       },
       "B": {
-        "text": "Bilan hépatique",
+        "text": "B : Bilan hépatique",
         "isCorrect": false
       },
       "C": {
-        "text": "Bilan phosphocalcique",
+        "text": "C : Bilan phosphocalcique",
         "isCorrect": true
       },
       "D": {
-        "text": "Électrophorèse des protéines",
+        "text": "D : Électrophorèse des protéines",
         "isCorrect": true
       },
       "E": {
-        "text": "Prolactinémie",
+        "text": "E : Prolactinémie",
         "isCorrect": false
       }
     },
@@ -200,19 +205,19 @@
     "question": "Question 6 : Interprétation de ces résultats ?",
     "options": {
       "A": {
-        "text": "Calcémie normale",
+        "text": "A : Calcémie normale",
         "isCorrect": true
       },
       "B": {
-        "text": "Hypocalcemie",
+        "text": "B : Hypocalcemie",
         "isCorrect": false
       },
       "C": {
-        "text": "Élévation des phosphatases alcalines",
+        "text": "C : Élévation des phosphatases alcalines",
         "isCorrect": false
       },
       "D": {
-        "text": "Hypophosphoretile",
+        "text": "D : Hypophosphoretile",
         "isCorrect": false
       }
     },
@@ -234,19 +239,19 @@
     "question": "Question 7 : Quel est le diagnostic à retenir ?",
     "options": {
       "A": {
-        "text": "Osteopénie",
+        "text": "A : Osteopénie",
         "isCorrect": false
       },
       "B": {
-        "text": "Ostéoporose sévére",
+        "text": "B : Ostéoporose sévére",
         "isCorrect": true
       },
       "C": {
-        "text": "Ostéoporose",
+        "text": "C : Ostéoporose",
         "isCorrect": false
       },
       "D": {
-        "text": "Normal",
+        "text": "D : Normal",
         "isCorrect": false
       }
     },
@@ -260,28 +265,23 @@
   {
     "id": 26,
     "role": "mme_monia",
-    "message": "Ostéoporose sévère ? Vous êtes sûr que ce n'est pas un peu exagéré ?"
-  },
-  {
-    "id": 27,
-    "role": "mme_monia",
     "message": "Ostéoporose sévère ? Vous êtes sûr que vous ne confondez pas avec ma voisine du 3ème étage?"
   },
   {
-    "id": 28,
+    "id": 27,
     "role": "game",
     "question": "Question 8 : Quelle prise en charge médicamenteuse proposer ?",
     "options": {
       "A": {
-        "text": "Aucun traitement, simple surveillance",
+        "text": "A : Aucun traitement, simple surveillance",
         "isCorrect": false
       },
       "B": {
-        "text": "Calcium vitamine D uniquement",
+        "text": "B : Calcium + vitamine D uniquement",
         "isCorrect": false
       },
       "C": {
-        "text": "Bisphosphonates calcium vitamine D",
+        "text": "C : Bisphosphonates + calcium + vitamine D",
         "isCorrect": true
       },
       "D": {
@@ -289,107 +289,103 @@
         "isCorrect": false
       }
     },
-    "next": 29
+    "next": 28
   },
   {
-    "id": 29,
+    "id": 28,
     "role": "me",
     "message": "Les bisphosphonates sont le traitement de première intention en cas d'ostéoporose sévére."
   },
   {
-    "id": 30,
-    "role": "mme_monia",
-    "message": "Bisphosphonates ? C'est pas un médicament pour les dinosaures ça ?"
-  },
-  {
-    "id": 31,
+    "id": 29,
     "role": "mme_monia",
     "message": "Des bisphos-machins ? Vous êtes sûr que ce n'est pas pour les dinosaures, ce nom-là?"
   },
   {
-    "id": 32,
+    "id": 30,
     "role": "mme_monia",
     "message": "Sinon, ya-t-il autre chose que je puisse faire pour éviter une autre fracture, docteur?"
   },
   {
-    "id": 33,
+    "id": 31,
     "role": "game",
+    "multipleChoice": true,
     "question": "Question 9 : Quelles mesures hygiéno-diététiques recommanderiez-vous?",
     "options": {
       "A": {
-        "text": "Encourager une activité physique régulière",
+        "text": "A : Encourager une activité physique régulière",
         "isCorrect": true
       },
       "B": {
-        "text": "Cesser le tabac",
+        "text": "B : Cesser le tabac",
         "isCorrect": true
       },
       "C": {
-        "text": "Alimentation riche en calcium et vitamine D",
+        "text": "C : Alimentation riche en calcium et vitamine D",
         "isCorrect": true
       },
       "D": {
-        "text": "Prévention des chutes (aménagement, éclairage, correction visuelle)",
+        "text": "D : Prévention des chutes (aménagement, éclairage, correction visuelle)",
         "isCorrect": true
       },
       "E": {
-        "text": "Réduction de la consommation d'alcool",
+        "text": "E : Réduction de la consommation d'alcool",
         "isCorrect": true
       }
     },
-    "next": 34
+    "next": 32
   },
   {
-    "id": 34,
+    "id": 32,
     "role": "mme_monia",
     "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur ?"
   },
   {
-    "id": 35,
+    "id": 33,
     "role": "mme_monia",
     "message": "Je vais devoir repasser des examens ? Si vous venez avec des croissants, je veux bien !"
   },
   {
-    "id": 36,
+    "id": 34,
     "role": "game",
+    "multipleChoice": true,
     "question": "Question 10 : Quelle surveillance mettre en place?",
     "options": {
       "A": {
-        "text": "DMO à la fin du traitement",
+        "text": "A : DMO à la fin du traitement",
         "isCorrect": true
       },
       "B": {
-        "text": "DMO tous les 2 à 3 ans",
+        "text": "B : DMO tous les 2 à 3 ans",
         "isCorrect": true
       },
       "C": {
-        "text": "Dosage sanguin du traitement pour vérifier l'observance",
+        "text": "C : Dosage sanguin du traitement pour vérifier l'observance",
         "isCorrect": false
       },
       "D": {
-        "text": "Mesure de la taille",
+        "text": "D : Mesure de la taille",
         "isCorrect": true
       },
       "E": {
-        "text": "Non ce n'est pas nécessaire",
+        "text": "E : Non ce n'est pas nécessaire",
         "isCorrect": false
       }
-    },
-    "next": 37
+    }
   },
   {
-    "id":37,
+    "id":35,
     "role" : "me",
     "message" : "La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
   },
   {
-    "id": 38,
+    "id": 36,
     "role": "mme_monia",
     "message": "Merci docteur Grâce à vous, je vais pouvoir danser encore longtemps... mais avec des chaussures antidérapantes cette fois!"
   },
   {
-    "id": 39,
-    "role": "fin du scénario - Synthese",
-    "message": "Vous avez:\nIdentifié une fracture de fragilité\nRéalisé les explorations nécessaires (DMO + bilan)\nPosé le diagnostic d'ostéoporose sévère\nMis en place un traitement adapté\nConseillé les bonnes mesures de prévention\nOrganisé une surveillance à long terme\n"
+    "id": 37,
+    "role": "narrator",
+    "message": "fin du scénario - Synthese :\nVous avez:\nIdentifié une fracture de fragilité\nRéalisé les explorations nécessaires (DMO + bilan)\nPosé le diagnostic d'ostéoporose sévère\nMis en place un traitement adapté\nConseillé les bonnes mesures de prévention\nOrganisé une surveillance à long terme\n"
   }
 ]
