@@ -285,7 +285,7 @@
         "isCorrect": true
       },
       "D": {
-        "text": "Teriparatide",
+        "text": "D : Teriparatide",
         "isCorrect": false
       }
     },
@@ -386,6 +386,6 @@
   {
     "id": 37,
     "role": "narrator",
-    "message": "fin du scénario - Synthese :\nVous avez:\nIdentifié une fracture de fragilité\nRéalisé les explorations nécessaires (DMO + bilan)\nPosé le diagnostic d'ostéoporose sévère\nMis en place un traitement adapté\nConseillé les bonnes mesures de prévention\nOrganisé une surveillance à long terme\n"
+    "message": "fin du scénario. "
   }
 ]
