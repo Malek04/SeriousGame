@@ -1,7 +1,7 @@
 .chat-container {
   max-width: 800px;
   margin: auto;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -40,7 +40,7 @@
 }
 
 .chat-row {
-  margin: 15px 0;
+  margin: 5px 0; /* Reduced spacing between rows */
 }
 
 .chat-row.left,
@@ -48,6 +48,7 @@
   margin-left: 10px;
   order: 2;
 }
+
 .chat-row.left .message-wrapper,
 .chat-row.right .message-wrapper {
   display: flex;
@@ -62,7 +63,7 @@
 .chat-row.narrator {
   justify-content: center;
   width: 100%;
-  margin: 25px  0;
+  margin: 15px 0;
 }
 
 .fixed-question {
@@ -84,14 +85,13 @@
   max-width: 100%;
   background-color: #f0f0f0;
   color: #333;
-  margin-bottom: 20px;
   text-align: center;
-  padding: 12px 20px 5px 20px; 
+  padding: 12px 20px 5px 20px;
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-style: italic;
+  margin-bottom: 0;
 }
-
 
 .narrator-text {
   text-align: center;
@@ -100,7 +100,7 @@
 
 .message-text.narrator-text {
   width: 100%;
-  margin-bottom: 20px; 
+  margin-bottom: 10px;
   word-wrap: break-word;
   text-align: center;
 }
@@ -133,9 +133,9 @@
   flex-shrink: 0;
 }
 
+/* CHAT BUBBLE GENERAL */
 .chat-bubble {
   max-width: 70%;
-  padding: 12px 20px;
   border-radius: 20px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -144,9 +144,11 @@
   color: white;
   opacity: 0;
   animation: fadeIn 0.4s ease forwards;
-  margin-bottom: 10px; 
+  margin-bottom: 0; /* Removed space under bubble */
+  padding: 10px 15px;
 }
 
+/* CHAT BUBBLE TYPES */
 .chat-bubble .message-text {
   white-space: pre-wrap;
 }
@@ -161,14 +163,13 @@
 
 .chat-bubble.me {
   background-color: #28a745;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   color: #ffffff;
   border: none;
   padding: 10px 15px;
   max-width: 70%;
   border-radius: 20px;
   animation: fadeIn 0.4s ease forwards;
-  margin-bottom: 10px;
+  margin-bottom: 0; /* Removed space under bubble */
 }
 
 .game-question {
@@ -192,11 +193,13 @@
   margin: 5px 5px 0 0;
 }
 
+/* ANIMATIONS */
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
