@@ -1,14 +1,27 @@
 <div class="chat-container">
   <!-- Fixed Header with Progress Bar -->
   <div class="header">
-    <h2>Cas Clinique : Fracture & Ostéoporose</h2>
-    <div class="progress-bar">
-      <div
-        class="progress"
-        [style.width.%]="(currentIndex / scenario.length) * 100"
-      >
-        {{ (currentIndex / scenario.length) * 100 | number : "1.0-0" }}%
-      </div>
+    <!-- Back Button -->
+    <button mat-icon-button [routerLink]="['']" matTooltip="Retour à l'accueil">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <!-- Title -->
+    <h2 class="header-title">{{ scenarioTitle }}</h2>
+
+    <!-- Reload Button -->
+    <button mat-icon-button (click)="reloadGame()" matTooltip="Recommencer">
+      <mat-icon>autorenew</mat-icon>
+    </button>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div
+      class="progress"
+      [style.width.%]="(currentIndex / scenario.length) * 100"
+    >
+      {{ (currentIndex / scenario.length) * 100 | number : "1.0-0" }}%
     </div>
   </div>
 
@@ -41,7 +54,10 @@
           class="message-container"
           [ngClass]="entry.from === 'me' ? 'me' : 'other'"
         >
-          <div class="speaker-name">{{ entry.from | titlecase }}</div>
+          <div class="speaker-name">
+            {{ displayNames[entry.from] || (entry.from | titlecase) }}
+          </div>
+
           <div class="message-wrapper">
             <img
               [src]="entry.imageUrl"
@@ -52,8 +68,7 @@
               class="chat-bubble"
               [ngClass]="{
                 'madame-monia': entry.from === 'mme_monia',
-                me: entry.from === 'me',
-                doctor: entry.from === 'dr_sami'
+                me: entry.from === 'me'
               }"
             >
               <div

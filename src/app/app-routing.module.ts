@@ -4,12 +4,13 @@ import { MainComponent } from './main/main.component';
 import { ChatComponent } from './Scénario/chat/chat.component';
 
 const routes: Routes = [
-  {path:'', component: MainComponent},
-  {path:'scenario1', component: ChatComponent},
+  { path: '', component: MainComponent },
+  { path: 'scenario1', component: ChatComponent },
+  { path: 'scenario2', component: ChatComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

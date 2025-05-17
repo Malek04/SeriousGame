@@ -10,15 +10,30 @@
 }
 
 .header {
-  flex-shrink: 0;
-  text-align: center;
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
   background: #f5f5f5;
   border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.header button {
+  flex: 0 0 auto;  
+}
+
+.header-title {
+  flex: 1 1 auto;
+  text-align: center;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 .progress-bar {
-  height: 20px;
+  height: 25px;
   background: #eee;
   border-radius: 10px;
   overflow: hidden;
@@ -40,7 +55,7 @@
 }
 
 .chat-row {
-  margin: 5px 0; /* Reduced spacing between rows */
+  margin: 5px 0; 
 }
 
 .chat-row.left,
@@ -133,7 +148,6 @@
   flex-shrink: 0;
 }
 
-/* CHAT BUBBLE GENERAL */
 .chat-bubble {
   max-width: 70%;
   border-radius: 20px;
@@ -144,11 +158,10 @@
   color: white;
   opacity: 0;
   animation: fadeIn 0.4s ease forwards;
-  margin-bottom: 0; /* Removed space under bubble */
+  margin-bottom: 0;
   padding: 10px 15px;
 }
 
-/* CHAT BUBBLE TYPES */
 .chat-bubble .message-text {
   white-space: pre-wrap;
 }
@@ -169,7 +182,7 @@
   max-width: 70%;
   border-radius: 20px;
   animation: fadeIn 0.4s ease forwards;
-  margin-bottom: 0; /* Removed space under bubble */
+  margin-bottom: 0;
 }
 
 .game-question {
@@ -193,7 +206,6 @@
   margin: 5px 5px 0 0;
 }
 
-/* ANIMATIONS */
 @keyframes fadeIn {
   from {
     opacity: 0;

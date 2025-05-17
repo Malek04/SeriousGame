@@ -5,8 +5,8 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import scenario from '../file/scenario1.json';
 import { QuestionDialogComponent } from '../questions/questions.component';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
@@ -33,26 +33,56 @@ interface GameStep {
 })
 export class ChatComponent implements OnInit {
   @ViewChild('chatBox') chatBox!: ElementRef;
+
   scenario: GameStep[] = [];
   currentIndex = 0;
   chatHistory: any[] = [];
   selectedOptions: { [key: number]: Set<string> } = {};
   pendingQuestion: any = null;
+  scenarioKey: string = 'scenario1';
 
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/monia.png',
     me: 'assets/doc.png',
   };
 
+  displayNames: { [key: string]: string } = {
+    mme_monia: 'Madame Monia',
+    mr_cherif: 'Monsieur Cherif',
+    me: 'Vous',
+  };
+
+  scenarioTitles: { [key: string]: string } = {
+    scenario1: 'Osteogame',
+    scenario2: 'Mission inflammation !',
+  };
+
   constructor(
+    private route: ActivatedRoute,
     private http: HttpClient,
     private cdRef: ChangeDetectorRef,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.scenario = scenario as GameStep[];
-    this.playNext();
+    this.route.paramMap.subscribe((params) => {
+      const key = params.get('scenario');
+      this.scenarioKey = key ?? 'scenario1';
+      this.loadScenario();
+    });
+  }
+
+  loadScenario(): void {
+    this.http.get<GameStep[]>(`assets/${this.scenarioKey}.json`).subscribe({
+      next: (data) => {
+        this.scenario = data;
+        this.playNext();
+      },
+      error: (err) => {
+        console.error('Failed to load scenario:', err);
+        Swal.fire('Erreur', 'Le scénario demandé est introuvable.', 'error');
+      },
+    });
   }
 
   scrollToBottom(): void {
@@ -85,42 +115,15 @@ export class ChatComponent implements OnInit {
     this.cdRef.detectChanges();
     this.scrollToBottom();
 
-    await new Promise((res) => setTimeout(res, 300));
+    await new Promise((res) => setTimeout(res, 500));
 
-    if (step.role === 'narrator') {
-      await this.revealMessage(message);
-    } else {
-      message.partial = false;
-      message.displayedText = message.text;
-      this.cdRef.detectChanges();
-      this.scrollToBottom();
-    }
+    message.partial = false;
+    message.displayedText = message.text;
+    this.cdRef.detectChanges();
+    this.scrollToBottom();
 
     this.currentIndex++;
     setTimeout(() => this.playNext(), 500);
-  }
-
-  revealMessage(message: any): Promise<void> {
-    return new Promise((resolve) => {
-      const words = message.text.split(' ');
-      let index = 0;
-
-      const interval = setInterval(() => {
-        message.displayedText += words[index] + ' ';
-        index++;
-
-        if (index === words.length) {
-          clearInterval(interval);
-          message.partial = false;
-          this.cdRef.detectChanges();
-          this.scrollToBottom();
-          resolve();
-        } else {
-          this.cdRef.detectChanges();
-          this.scrollToBottom();
-        }
-      }, 200);
-    });
   }
 
   getOptionFeedback(step: GameStep, optionKey: string): string | null {
@@ -158,7 +161,6 @@ export class ChatComponent implements OnInit {
           if (result.correct) {
             this.selectedOptions[step.id] = new Set();
             this.pendingQuestion = null;
-
             this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
             this.playNext();
           } else {
@@ -191,11 +193,14 @@ export class ChatComponent implements OnInit {
     this.currentIndex = 0;
     this.chatHistory = [];
     this.selectedOptions = {};
-    this.playNext();
-    window.location.reload();
+    this.loadScenario();
   }
 
   findIndexById(id: number): number {
     return this.scenario.findIndex((step) => step.id === id);
+  }
+
+  get scenarioTitle(): string {
+    return this.scenarioTitles[this.scenarioKey] ?? 'Scénario inconnu';
   }
 }
