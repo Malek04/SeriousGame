@@ -260,8 +260,9 @@
   {
     "id": 25,
     "role": "me",
-    "message": "Une fracture de fragilité avec T-score s-2,5 ostéoporose sévère (OMS)."
+    "message": "Une fracture de fragilité avec T-score <= 2,5 = ostéoporose sévère (OMS)."
   },
+
   {
     "id": 26,
     "role": "mme_monia",
@@ -337,16 +338,41 @@
   },
   {
     "id": 32,
+    "role": "me",
+    "message": "Je vous recommande d'encourager une activité physique régulière."
+  },
+  {
+    "id": 33,
+    "role": "me",
+    "message": "Il est important de cesser le tabac pour votre santé."
+  },
+  {
+    "id": 34,
+    "role": "me",
+    "message": "Adoptez une alimentation riche en calcium et vitamine D."
+  },
+  {
+    "id": 35,
+    "role": "me",
+    "message": "La prévention des chutes est essentielle : aménagement du domicile, bon éclairage, correction visuelle."
+  },
+  {
+    "id": 36,
+    "role": "me",
+    "message": "Réduisez votre consommation d'alcool pour limiter les risques."
+  },
+  {
+    "id": 37,
     "role": "mme_monia",
     "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur ?"
   },
   {
-    "id": 33,
+    "id": 38,
     "role": "mme_monia",
     "message": "Je vais devoir repasser des examens ? Si vous venez avec des croissants, je veux bien !"
   },
   {
-    "id": 34,
+    "id": 39,
     "role": "game",
     "multipleChoice": true,
     "question": "Question 10 : Quelle surveillance mettre en place?",
@@ -374,17 +400,17 @@
     }
   },
   {
-    "id":35,
-    "role" : "me",
-    "message" : "La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+    "id": 40,
+    "role": "me",
+    "message": "La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
   },
   {
-    "id": 36,
+    "id": 41,
     "role": "mme_monia",
     "message": "Merci docteur Grâce à vous, je vais pouvoir danser encore longtemps... mais avec des chaussures antidérapantes cette fois!"
   },
   {
-    "id": 37,
+    "id": 42,
     "role": "narrator",
     "message": "fin du scénario. "
   }

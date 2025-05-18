@@ -44,8 +44,8 @@ export class ChatComponent implements OnInit {
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/monia.png',
     me: 'assets/doc.png',
+    mr_cherif: 'assets/Cherif.png',
   };
-
   displayNames: { [key: string]: string } = {
     mme_monia: 'Madame Monia',
     mr_cherif: 'Monsieur Cherif',

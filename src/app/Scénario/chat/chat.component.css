@@ -33,7 +33,7 @@
 }
 
 .progress-bar {
-  height: 25px;
+  height: 10px;
   background: #eee;
   border-radius: 10px;
   overflow: hidden;
@@ -168,6 +168,9 @@
 
 .madame-monia {
   background-color: #007bff;
+}
+.monsieur-cherif {
+  background-color: #007bff; 
 }
 
 .doctor {

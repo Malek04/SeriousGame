@@ -5,8 +5,8 @@ import { ChatComponent } from './Scénario/chat/chat.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'scenario1', component: ChatComponent },
-  { path: 'scenario2', component: ChatComponent },
+  { path: 'chat/:scenario', component: ChatComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

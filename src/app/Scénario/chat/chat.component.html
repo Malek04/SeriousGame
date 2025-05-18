@@ -21,7 +21,6 @@
       class="progress"
       [style.width.%]="(currentIndex / scenario.length) * 100"
     >
-      {{ (currentIndex / scenario.length) * 100 | number : "1.0-0" }}%
     </div>
   </div>
 
@@ -68,6 +67,7 @@
               class="chat-bubble"
               [ngClass]="{
                 'madame-monia': entry.from === 'mme_monia',
+                'monsieur-cherif': entry.from === 'mr_cherif',
                 me: entry.from === 'me'
               }"
             >

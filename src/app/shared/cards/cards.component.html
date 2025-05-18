@@ -22,7 +22,7 @@
               Vous êtes un médecin généraliste. Un jour, Mme Monia, votre voisine âgée de 67 ans, vous interpelle. Elle vient de subir une fracture du poignet gauche après avoir glissé dans sa cuisine. Elle a été plâtrée aux urgences.
             </p>
             <a
-              [routerLink]="'/scenario1'"
+              [routerLink]="['/chat', 'scenario1']"
               class="btn-custom"
               (mouseenter)="onButtonHover(cardImage1)"
               (mouseleave)="onButtonLeave(cardImage1)"
@@ -51,7 +51,7 @@
               agacé. 
             </p>
             <a
-              href="scenario2"
+              [routerLink]="['/chat', 'scenario2']"
               class="btn-custom"
               (mouseenter)="onButtonHover(cardImage2)"
               (mouseleave)="onButtonLeave(cardImage2)"
