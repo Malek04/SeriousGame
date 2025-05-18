@@ -194,6 +194,7 @@ export class ChatComponent implements OnInit {
     this.chatHistory = [];
     this.selectedOptions = {};
     this.loadScenario();
+    window.location.reload();
   }
 
   findIndexById(id: number): number {

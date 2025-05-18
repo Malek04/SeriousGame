@@ -19,9 +19,10 @@
   <div class="progress-bar">
     <div
       class="progress"
-      [style.width.%]="(currentIndex / scenario.length) * 100"
-    >
-    </div>
+      [style.width.%]="
+        scenario.length > 0 ? (currentIndex / scenario.length) * 100 : 0
+      "
+    ></div>
   </div>
 
   <!-- Scrollable Chat Section -->
