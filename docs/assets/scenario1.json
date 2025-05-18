@@ -1,0 +1,417 @@
+[
+  {
+    "id": 1,
+    "role": "narrator",
+    "message": "Vous êtes médecin généraliste. Un jour, dans l'ascenseur de votre immeuble, Mme Monia, votre voisine, âgée de 67 ans, vous interpelle. Elle vient de subir une fracture du poignet gauche après avoir glissé dans sa cuisine. Elle a été plâtrée aux urgences et est rentrée chez elle."
+  },
+  {
+    "id": 2,
+    "role": "mme_monia",
+    "message": "Vous savez docteur, je voulais juste attraper une olive... et paf! Mon poignet a dit stop!"
+  },
+  {
+    "id": 3,
+    "role": "game",
+    "question": "Question 1 : Quelle est la conduite à tenir face à cette situation ?",
+    "options": {
+      "A": {
+        "text": "A : Rien, c'est une fracture banale après chute",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : L'inviter à venir consulter devant la suspicion d'une fracture ostéoporotique.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "C : Lui proposer une radio de contrôle dans un mois.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Lui proposer de faire des exercices de musculation pour renforcer son poignet.",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id": 4,
+    "role": "me",
+    "message": "Toute fracture survenue après un traumatisme minime chez une personne âgée doit faire suspecter une ostéoporose."
+  },
+  {
+    "id": 5,
+    "role": "mme_monia",
+    "message": "C'est pas grand chose hein? Ça doit arriver à tout le monde de tomber... non?"
+  },
+  {
+    "id": 6,
+    "role": "me",
+    "message": "Vous Ne vous inquiétez pas madame Monia. Venez moi voir et on va faire le point ensembles"
+  },
+  {
+    "id": 7,
+    "role": "narrator",
+    "message": "Elle accepte de venir consulter. Vous débutez votre évaluation clinique."
+  },
+  {
+    "id": 8,
+    "role": "game",
+    "multipleChoice": true,
+    "question": "Question 2 : Quel(s) facteur(s) de risque sont à rechercher lors de l'interrogatoire ?",
+    "options": {
+      "A": {
+        "text": "A : Une menopause tardive",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Une prise prolongée d'AINS",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Une fracture du col fémoral chez la mère",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "D : Un tabagisme actif.",
+        "isCorrect": true
+      },
+      "E": {
+        "text": "E :  Une obésité.",
+        "isCorrect": true
+      }
+    },
+    "next": 9
+  },
+  {
+    "id": 9,
+    "role": "mme_monia",
+    "message": "Ma mère s'était cassé la hanche... mais elle avait 85 ans ! Et moi je bouge tout le temps et je fais toujours mes cours de danse."
+  },
+  {
+    "id": 10,
+    "role": "narrator",
+    "message": "Vous lui prescrivez des examens complémentaires."
+  },
+  {
+    "id": 11,
+    "role": "game",
+    "question": "Question 3 :  Quel(s) examen(s) radiologique(s) faut-il prescrire pour évaluer la fragilité osseuse ?",
+    "options": {
+      "A": {
+        "text": "A : Radiographie du poignet",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Densitométrie osseuse (DMO)",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "C : Radiographie du bassin.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Scintigrahie osseuse.",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : Aucun examen, le diagnostic est clinique",
+        "isCorrect": false
+      }
+    },
+    "next": 12
+  },
+  {
+    "id": 12,
+    "role": "me",
+    "message": "La DMO est l'examen de référence pour quantifier la densité mínérale osseuse."
+  },
+  {
+    "id": 13,
+    "role": "mme_monia",
+    "message": "Une densito... quoi ? J'ai pas de densité moi, j'ai du peps!"
+  },
+  {
+    "id": 14,
+    "role": "narrator",
+    "message": "La patiente revient avec sa DMO : \n Résultats: T-score-2.5 au rachis lombaire, \n -2.4 au col fémoral"
+  },
+  {
+    "id": 15,
+    "role": "mme_monia",
+    "message": "Alors docteur, vous allez me dire que j'ai des os en mousse maintenant ?"
+  },
+  {
+    "id": 16,
+    "role": "game",
+    "question": "Question 4 : À ce stade, le diagnostic d'ostéoporose est-il confirmé ?",
+    "options": {
+      "A": {
+        "text": "A : Vrai",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Faux",
+        "isCorrect": true
+      }
+    },
+    "next": 17
+  },
+  {
+    "id": 17,
+    "role": "me",
+    "message": "Une DMO avec T-score ≤ -2,5 évoque une ostéopathie raréfiante, mais le diagnostic d'ostéoporose nécessite de faire un bilan étiologique."
+  },
+  {
+    "id": 18,
+    "role": "game",
+    "multipleChoice": true,
+    "question": "Question 5 : Quels examens biologiques prescrire pour compléter le diagnostic?",
+    "options": {
+      "A": {
+        "text": "A : Bilan renal",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "B : Bilan hépatique",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Bilan phosphocalcique",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "D : Électrophorèse des protéines",
+        "isCorrect": true
+      },
+      "E": {
+        "text": "E : Prolactinémie",
+        "isCorrect": false
+      }
+    },
+    "next": 19
+  },
+  {
+    "id": 19,
+    "role": "mme_monia",
+    "message": "Bon, si je dois faire une prise de sang, vous me promettez un bonbon après?."
+  },
+  {
+    "id": 20,
+    "role": "narrator",
+    "message": "Résultats du bilan biologique \n Calcémie: 21 mmol/l. \nThosphorêtnie: L1 mmol/L. \nPAL: 140 UL/L \nCreatinine: 70 µmol/L \n Albumine: 32 g/L \n EPP: Pas de pic monoclorual"
+  },
+  {
+    "id": 21,
+    "role": "game",
+    "question": "Question 6 : Interprétation de ces résultats ?",
+    "options": {
+      "A": {
+        "text": "A : Calcémie normale",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "B : Hypocalcemie",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Élévation des phosphatases alcalines",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Hypophosphoretile",
+        "isCorrect": false
+      }
+    },
+    "next": 22
+  },
+  {
+    "id": 22,
+    "role": "me",
+    "message": "La calcémie corrigée (2.3 mmol/L) est normale. Ce bilan élimine les autres causes d'ostéopathies raréfiantes (IRC, myélome, ostéomalacie...)."
+  },
+  {
+    "id": 23,
+    "role": "mme_monia",
+    "message": "Ah ben voilà, je suis normale finalement! Je vous l'avais dit que c'était rien de grave!"
+  },
+  {
+    "id": 24,
+    "role": "game",
+    "question": "Question 7 : Quel est le diagnostic à retenir ?",
+    "options": {
+      "A": {
+        "text": "A : Osteopénie",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Ostéoporose sévére",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "C : Ostéoporose",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Normal",
+        "isCorrect": false
+      }
+    },
+    "next": 25
+  },
+  {
+    "id": 25,
+    "role": "me",
+    "message": "Une fracture de fragilité avec T-score <= 2,5 = ostéoporose sévère (OMS)."
+  },
+
+  {
+    "id": 26,
+    "role": "mme_monia",
+    "message": "Ostéoporose sévère ? Vous êtes sûr que vous ne confondez pas avec ma voisine du 3ème étage?"
+  },
+  {
+    "id": 27,
+    "role": "game",
+    "question": "Question 8 : Quelle prise en charge médicamenteuse proposer ?",
+    "options": {
+      "A": {
+        "text": "A : Aucun traitement, simple surveillance",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Calcium + vitamine D uniquement",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Bisphosphonates + calcium + vitamine D",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "D : Teriparatide",
+        "isCorrect": false
+      }
+    },
+    "next": 28
+  },
+  {
+    "id": 28,
+    "role": "me",
+    "message": "Les bisphosphonates sont le traitement de première intention en cas d'ostéoporose sévére."
+  },
+  {
+    "id": 29,
+    "role": "mme_monia",
+    "message": "Des bisphos-machins ? Vous êtes sûr que ce n'est pas pour les dinosaures, ce nom-là?"
+  },
+  {
+    "id": 30,
+    "role": "mme_monia",
+    "message": "Sinon, ya-t-il autre chose que je puisse faire pour éviter une autre fracture, docteur?"
+  },
+  {
+    "id": 31,
+    "role": "game",
+    "multipleChoice": true,
+    "question": "Question 9 : Quelles mesures hygiéno-diététiques recommanderiez-vous?",
+    "options": {
+      "A": {
+        "text": "A : Encourager une activité physique régulière",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "B : Cesser le tabac",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "C : Alimentation riche en calcium et vitamine D",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "D : Prévention des chutes (aménagement, éclairage, correction visuelle)",
+        "isCorrect": true
+      },
+      "E": {
+        "text": "E : Réduction de la consommation d'alcool",
+        "isCorrect": true
+      }
+    },
+    "next": 32
+  },
+  {
+    "id": 32,
+    "role": "me",
+    "message": "Je vous recommande d'encourager une activité physique régulière."
+  },
+  {
+    "id": 33,
+    "role": "me",
+    "message": "Il est important de cesser le tabac pour votre santé."
+  },
+  {
+    "id": 34,
+    "role": "me",
+    "message": "Adoptez une alimentation riche en calcium et vitamine D."
+  },
+  {
+    "id": 35,
+    "role": "me",
+    "message": "La prévention des chutes est essentielle : aménagement du domicile, bon éclairage, correction visuelle."
+  },
+  {
+    "id": 36,
+    "role": "me",
+    "message": "Réduisez votre consommation d'alcool pour limiter les risques."
+  },
+  {
+    "id": 37,
+    "role": "mme_monia",
+    "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur ?"
+  },
+  {
+    "id": 38,
+    "role": "mme_monia",
+    "message": "Je vais devoir repasser des examens ? Si vous venez avec des croissants, je veux bien !"
+  },
+  {
+    "id": 39,
+    "role": "game",
+    "multipleChoice": true,
+    "question": "Question 10 : Quelle surveillance mettre en place?",
+    "options": {
+      "A": {
+        "text": "A : DMO à la fin du traitement",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "B : DMO tous les 2 à 3 ans",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "C : Dosage sanguin du traitement pour vérifier l'observance",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Mesure de la taille",
+        "isCorrect": true
+      },
+      "E": {
+        "text": "E : Non ce n'est pas nécessaire",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id": 40,
+    "role": "me",
+    "message": "La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
+  },
+  {
+    "id": 41,
+    "role": "mme_monia",
+    "message": "Merci docteur Grâce à vous, je vais pouvoir danser encore longtemps... mais avec des chaussures antidérapantes cette fois!"
+  },
+  {
+    "id": 42,
+    "role": "narrator",
+    "message": "fin du scénario. "
+  }
+]
