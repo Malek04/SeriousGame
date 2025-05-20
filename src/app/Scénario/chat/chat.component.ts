@@ -42,9 +42,9 @@ export class ChatComponent implements OnInit {
   scenarioKey: string = 'scenario1';
 
   profileImages: { [key: string]: string } = {
-    mme_monia: 'assets/monia.png',
-    me: 'assets/doc.png',
-    mr_cherif: 'assets/Cherif.png',
+    mme_monia: 'assets/character/monia.png',
+    me: 'assets/character/doc.png',
+    mr_cherif: 'assets/character/Cherif.png',
   };
   displayNames: { [key: string]: string } = {
     mme_monia: 'Madame Monia',
@@ -73,16 +73,18 @@ export class ChatComponent implements OnInit {
   }
 
   loadScenario(): void {
-    this.http.get<GameStep[]>(`assets/${this.scenarioKey}.json`).subscribe({
-      next: (data) => {
-        this.scenario = data;
-        this.playNext();
-      },
-      error: (err) => {
-        console.error('Failed to load scenario:', err);
-        Swal.fire('Erreur', 'Le scénario demandé est introuvable.', 'error');
-      },
-    });
+    this.http
+      .get<GameStep[]>(`assets/file/${this.scenarioKey}.json`)
+      .subscribe({
+        next: (data) => {
+          this.scenario = data;
+          this.playNext();
+        },
+        error: (err) => {
+          console.error('Failed to load scenario:', err);
+          Swal.fire('Erreur', 'Le scénario demandé est introuvable.', 'error');
+        },
+      });
   }
 
   scrollToBottom(): void {
