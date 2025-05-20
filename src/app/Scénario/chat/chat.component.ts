@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   ViewChild,
   ElementRef,
+  OnDestroy,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -31,7 +32,7 @@ interface GameStep {
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css'],
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('chatBox') chatBox!: ElementRef;
 
   scenario: GameStep[] = [];
@@ -40,6 +41,10 @@ export class ChatComponent implements OnInit {
   selectedOptions: { [key: number]: Set<string> } = {};
   pendingQuestion: any = null;
   scenarioKey: string = 'scenario1';
+
+  typingAudio: HTMLAudioElement;
+  pafAudio: HTMLAudioElement;
+  backgroundAudio: HTMLAudioElement;
 
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/character/monia.png',
@@ -62,7 +67,21 @@ export class ChatComponent implements OnInit {
     private http: HttpClient,
     private cdRef: ChangeDetectorRef,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.typingAudio = new Audio('assets/sound/typing.mp3');
+    this.typingAudio.loop = true;
+    this.typingAudio.load();
+    this.typingAudio.volume = 1;
+
+    this.pafAudio = new Audio('assets/sound/notification.mp3');
+    this.pafAudio.load();
+    this.pafAudio.volume = 0.3;
+
+    this.backgroundAudio = new Audio('assets/sound/sound.mp3');
+    this.backgroundAudio.loop = true;
+    this.backgroundAudio.volume = 0.2;
+    this.backgroundAudio.load();
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -70,6 +89,33 @@ export class ChatComponent implements OnInit {
       this.scenarioKey = key ?? 'scenario1';
       this.loadScenario();
     });
+
+    // Start background music after user interaction
+    this.playBackgroundSound();
+  }
+
+  ngOnDestroy(): void {
+    this.backgroundAudio.pause();
+    this.backgroundAudio.currentTime = 0;
+  }
+
+  playBackgroundSound(): void {
+    try {
+      this.backgroundAudio.play().catch((err) => {
+        console.warn(
+          'Background audio may be blocked until user interacts:',
+          err
+        );
+        // Fallback: Play when the user clicks anywhere
+        const resumeAudio = () => {
+          this.backgroundAudio.play();
+          document.removeEventListener('click', resumeAudio);
+        };
+        document.addEventListener('click', resumeAudio);
+      });
+    } catch (err) {
+      console.error('Failed to play background audio:', err);
+    }
   }
 
   loadScenario(): void {
@@ -117,12 +163,36 @@ export class ChatComponent implements OnInit {
     this.cdRef.detectChanges();
     this.scrollToBottom();
 
-    await new Promise((res) => setTimeout(res, 500));
+    if (step.role === 'narrator') {
+      message.displayedText = message.text;
+      message.partial = false;
+      this.cdRef.detectChanges();
+      this.scrollToBottom();
+    } else {
+      try {
+        this.typingAudio.currentTime = 0;
+        await this.typingAudio.play();
+      } catch (err) {
+        console.warn('Typing audio play blocked:', err);
+      }
 
-    message.partial = false;
-    message.displayedText = message.text;
-    this.cdRef.detectChanges();
-    this.scrollToBottom();
+      await new Promise((res) => setTimeout(res, 1500));
+
+      this.typingAudio.pause();
+      this.typingAudio.currentTime = 0;
+
+      try {
+        this.pafAudio.currentTime = 0;
+        await this.pafAudio.play();
+      } catch (err) {
+        console.warn('Paf sound blocked:', err);
+      }
+
+      message.displayedText = message.text;
+      message.partial = false;
+      this.cdRef.detectChanges();
+      this.scrollToBottom();
+    }
 
     this.currentIndex++;
     setTimeout(() => this.playNext(), 500);
@@ -147,8 +217,7 @@ export class ChatComponent implements OnInit {
         const selectedOptionKey = result.selectedOptions[0];
         const step = entry.data;
 
-        this.selectedOptions[step.id] = new Set();
-        this.selectedOptions[step.id].add(selectedOptionKey);
+        this.selectedOptions[step.id] = new Set([selectedOptionKey]);
 
         this.chatHistory.push({
           type: 'answer',
@@ -161,7 +230,6 @@ export class ChatComponent implements OnInit {
 
         setTimeout(() => {
           if (result.correct) {
-            this.selectedOptions[step.id] = new Set();
             this.pendingQuestion = null;
             this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
             this.playNext();

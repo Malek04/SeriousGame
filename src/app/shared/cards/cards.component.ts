@@ -16,4 +16,8 @@ export class CardsComponent implements OnInit {
   onButtonLeave(image: HTMLElement): void {
     image.style.transform = 'translateY(0)';
   }
+  start(): void {
+    const silent = new Audio();
+    silent.play().catch(() => {});
+  }
 }
