@@ -1,0 +1,23 @@
+<div class="mat-dialog-container p-0">
+  <div class="modal-content bg-light p-4 rounded shadow">
+    <div class="modal-header border-0">
+      <h5 class="modal-title text-success">🎉 Félicitations !</h5>
+    </div>
+
+    <div class="modal-body">
+      <p class="mb-0 text-dark" style="white-space: pre-line">
+        {{ data.message }}
+      </p>
+    </div>
+
+    <div class="modal-footer border-0 mt-4 justify-content-center">
+      <button
+        mat-button
+        class="btn btn-success px-4"
+        (click)="dialogRef.close()"
+      >
+        Ok
+      </button>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "role": "narrator",
-    "message": "Vous êtes médecin généraliste. Mr Chérif, 52 ans, consulte pour une douleur brutale de la cheville gauche survenue depuis 5 jours, sans traumatisme apparent. Il boîte et semble agacé. \n À vous de mener l’enquête clinique pour poser le bon diagnostic et proposer un traitement adapté !"
+    "message": "Vous êtes médecin généraliste. Mr Chérif, 52 ans, consulte pour une douleur brutale de la cheville gauche survenue depuis 5 jours, sans traumatisme apparent. Il boîte et semble agacé. \n À vous de mener l’enquête clinique pour poser le bon diagnostic et proposer un traitement adapté ! "
   },
   {
     "id": 2,
@@ -114,7 +114,7 @@
   {
     "id": 10,
     "role": "me",
-    "message": "Il faut documenter l’inflammation, explorer l’étiologie et éliminer d’autres diagnostics différentiels. "
+    "message": "Il faut compléter par un bilan inflammatoire et une uricémie "
   },
   {
     "id": 11,
@@ -245,7 +245,7 @@
   {
     "id": 22,
     "role": "me",
-    "message": "Colchicine, AINS, corticoïdes (30-35 mg/j) sont indiqués en traitement de la crise"
+    "message": "On débutera le traitement par 1 comprimé de colchicine à 1 mg, puis on ajoutera un demi-comprimé une heure plus tard. Ensuite, on poursuivra avec 1 comprimé par jour"
   },
   {
     "id": 23,
@@ -301,7 +301,7 @@
         "isCorrect": false
       },
       "B": {
-        "text": "B : N Changez juste vos chaussures, c’est la clé.",
+        "text": "B : Changez juste vos chaussures, c’est la clé.",
         "isCorrect": false
       },
       "C": {
@@ -326,6 +326,7 @@
   {
     "id": 29,
     "role": "narrator",
-    "message": "Fin du scénario : \n Félicitations ! Vous avez accompagné Mr Chérif avec rigueur, empathie et pédagogie. Il repart soulagé, informé et motivé à changer ses habitudes !"
+    "end" : true,
+    "message": "Félicitations ! Vous avez accompagné Mr Chérif avec rigueur, empathie et pédagogie. Il repart soulagé, informé et motivé à changer ses habitudes ! \n maintenant vous été capable de \n Identifier les signes cliniques d’une crise de goutte \n Prescrire les examens complémentaires utiles au diagnostic \n Savoir différencier une arthrite microcristalline d’une arthrite septique \n Connaître le traitement de la crise et le traitement de fond de goutte \n Prodiguer des conseils hygiéno-diététiques pertinents "
   }
 ]

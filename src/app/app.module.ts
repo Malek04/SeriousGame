@@ -21,6 +21,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RetryModalComponent } from './Scénario/retry-modal/retry-modal.component';
+import { EndScenarioDialogComponent } from './Scénario/end-scenario-dialogue/end-scenario-dialogue.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RetryModalComponent } from './Scénario/retry-modal/retry-modal.compone
     ChatComponent,
     QuestionDialogComponent,
     RetryModalComponent,
+    EndScenarioDialogComponent,
   ],
   imports: [
     MatDialogModule,

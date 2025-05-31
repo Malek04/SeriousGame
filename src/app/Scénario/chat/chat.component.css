@@ -1,7 +1,7 @@
 .chat-container {
   max-width: 800px;
   margin: auto;
-  height: 95vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -60,7 +60,7 @@
 
 .chat-row.left,
 .chat-row.right .profile-image {
-  margin-left: 10px;
+  margin-left: 0px;
   order: 2;
 }
 

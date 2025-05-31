@@ -76,7 +76,7 @@
       },
       "E": {
         "text": "E :  Une obésité.",
-        "isCorrect": true
+        "isCorrect": false
       }
     },
     "next": 9
@@ -197,7 +197,7 @@
   {
     "id": 20,
     "role": "narrator",
-    "message": "Résultats du bilan biologique \n Calcémie: 21 mmol/l. \nThosphorêtnie: L1 mmol/L. \nPAL: 140 UL/L \nCreatinine: 70 µmol/L \n Albumine: 32 g/L \n EPP: Pas de pic monoclorual"
+    "message": "Résultats du bilan biologique \n Calcémie: 21 mmol/l. \nThosphorêtnie: L1 mmol/L. \nCreatinine: 70 µmol/L \n Albumine: 32 g/L \n EPP: Pas de pic monoclorual"
   },
   {
     "id": 21,
@@ -217,7 +217,7 @@
         "isCorrect": false
       },
       "D": {
-        "text": "D : Hypophosphoretile",
+        "text": "D : Hypophosphorémie",
         "isCorrect": false
       }
     },
@@ -286,7 +286,7 @@
         "isCorrect": true
       },
       "D": {
-        "text": "D : Teriparatide",
+        "text": "D : Teriparatide seule",
         "isCorrect": false
       }
     },
@@ -295,20 +295,25 @@
   {
     "id": 28,
     "role": "me",
-    "message": "Les bisphosphonates sont le traitement de première intention en cas d'ostéoporose sévére."
+    "message": "On va commencer par les biphosphonates, associés à une supplémentation en calcium et en vitamine D."
   },
   {
     "id": 29,
-    "role": "mme_monia",
-    "message": "Des bisphos-machins ? Vous êtes sûr que ce n'est pas pour les dinosaures, ce nom-là?"
+    "role": "me",
+    "message": "Les bisphosphonates sont le traitement de première intention en cas d'ostéoporose sévére."
   },
   {
     "id": 30,
     "role": "mme_monia",
-    "message": "Sinon, ya-t-il autre chose que je puisse faire pour éviter une autre fracture, docteur?"
+    "message": "Des bisphos-machins ? Vous êtes sûr que ce n'est pas pour les dinosaures, ce nom-là?"
   },
   {
     "id": 31,
+    "role": "mme_monia",
+    "message": "Sinon, ya-t-il autre chose que je puisse faire pour éviter une autre fracture, docteur?"
+  },
+  {
+    "id": 32,
     "role": "game",
     "multipleChoice": true,
     "question": "Question 9 : Quelles mesures hygiéno-diététiques recommanderiez-vous?",
@@ -334,45 +339,50 @@
         "isCorrect": true
       }
     },
-    "next": 32
-  },
-  {
-    "id": 32,
-    "role": "me",
-    "message": "Je vous recommande d'encourager une activité physique régulière."
+    "next": 33
   },
   {
     "id": 33,
     "role": "me",
-    "message": "Il est important de cesser le tabac pour votre santé."
+    "message": "Je vous recommande de faire une activité physique régulière."
   },
   {
     "id": 34,
     "role": "me",
-    "message": "Adoptez une alimentation riche en calcium et vitamine D."
+    "message": "Il est important de cesser le tabac pour votre santé."
   },
   {
     "id": 35,
     "role": "me",
-    "message": "La prévention des chutes est essentielle : aménagement du domicile, bon éclairage, correction visuelle."
+    "message": "Adoptez une alimentation riche en calcium et vitamine D."
   },
   {
     "id": 36,
     "role": "me",
-    "message": "Réduisez votre consommation d'alcool pour limiter les risques."
+    "message": "La prévention des chutes est essentielle : aménagement du domicile, bon éclairage, correction visuelle."
   },
   {
     "id": 37,
-    "role": "mme_monia",
-    "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur ?"
+    "role": "me",
+    "message": "Réduisez votre consommation d'alcool."
   },
   {
     "id": 38,
     "role": "mme_monia",
-    "message": "Je vais devoir repasser des examens ? Si vous venez avec des croissants, je veux bien !"
+    "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur ?"
   },
   {
     "id": 39,
+    "role": "me",
+    "message": "Bien sûr, mais faites attention à ne pas glisser !"
+  },
+  {
+    "id": 40,
+    "role": "mme_monia",
+    "message": "Je vais devoir repasser des examens ? Si vous venez avec des croissants, je veux bien !"
+  },
+  {
+    "id": 41,
     "role": "game",
     "multipleChoice": true,
     "question": "Question 10 : Quelle surveillance mettre en place?",
@@ -397,21 +407,23 @@
         "text": "E : Non ce n'est pas nécessaire",
         "isCorrect": false
       }
-    }
+    },
+    "next": 42
   },
   {
-    "id": 40,
+    "id": 42,
     "role": "me",
     "message": "La surveillance repose sur un suivi clinique et une DMO tous les 2-3 ans. La mesure de la taille peut dépister une fracture vertébrale silencieuse."
   },
   {
-    "id": 41,
+    "id": 43,
     "role": "mme_monia",
     "message": "Merci docteur Grâce à vous, je vais pouvoir danser encore longtemps... mais avec des chaussures antidérapantes cette fois!"
   },
   {
-    "id": 42,
+    "id": 44,
     "role": "narrator",
-    "message": "fin du scénario. "
+    "end" : true,
+    "message": "Félicitations.\nMaintenant, vous êtes capable de :\nIdentifié une fracture de fragilité\n Réalisé les explorations nécessaires (DMO + bilan)\nPosé le diagnostic d’ostéoporose sévère\nMis en place un traitement adapté\n Conseillé les bonnes mesures de prévention\nOrganisé une surveillance à long terme "
   }
 ]

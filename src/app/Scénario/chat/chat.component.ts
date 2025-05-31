@@ -6,6 +6,7 @@ import {
   ElementRef,
   OnDestroy,
 } from '@angular/core';
+import { EndScenarioDialogComponent } from '../end-scenario-dialogue/end-scenario-dialogue.component';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { QuestionDialogComponent } from '../questions/questions.component';
@@ -25,6 +26,7 @@ interface GameStep {
     };
   };
   next?: number;
+  end?: boolean;
 }
 
 @Component({
@@ -45,6 +47,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   typingAudio: HTMLAudioElement;
   pafAudio: HTMLAudioElement;
   backgroundAudio: HTMLAudioElement;
+  failAudio: HTMLAudioElement;
 
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/character/monia.png',
@@ -71,16 +74,20 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.typingAudio = new Audio('assets/sound/typing.mp3');
     this.typingAudio.loop = true;
     this.typingAudio.load();
-    this.typingAudio.volume = 1;
+    this.typingAudio.volume = 0.04;
 
     this.pafAudio = new Audio('assets/sound/notification.mp3');
     this.pafAudio.load();
-    this.pafAudio.volume = 0.3;
+    this.pafAudio.volume = 0.04;
 
     this.backgroundAudio = new Audio('assets/sound/sound.mp3');
     this.backgroundAudio.loop = true;
-    this.backgroundAudio.volume = 0.2;
+    this.backgroundAudio.volume = 0.04;
     this.backgroundAudio.load();
+
+    this.failAudio = new Audio('assets/sound/wrong.mp3');
+    this.failAudio.volume = 0.04;
+    this.failAudio.load();
   }
 
   ngOnInit(): void {
@@ -143,6 +150,16 @@ export class ChatComponent implements OnInit, OnDestroy {
   async playNext(): Promise<void> {
     const step = this.scenario[this.currentIndex];
     if (!step) return;
+
+    // ✅ Handle end of scenario
+    if (step.end) {
+      this.dialog.open(EndScenarioDialogComponent, {
+        data: { message: step.message },
+        width: '600px',
+        disableClose: true,
+      });
+      return; // stop processing further steps
+    }
 
     if (step.role === 'game') {
       this.pendingQuestion = { data: step };
@@ -234,6 +251,12 @@ export class ChatComponent implements OnInit, OnDestroy {
             this.currentIndex = this.findIndexById(step.next ?? step.id + 1);
             this.playNext();
           } else {
+            try {
+              this.failAudio.currentTime = 0;
+              this.failAudio.play();
+            } catch (err) {
+              console.warn('Failed to play fail sound:', err);
+            }
             this.showRetryAlert();
           }
         }, 1500);
