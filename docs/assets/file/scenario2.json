@@ -327,6 +327,7 @@
     "id": 29,
     "role": "narrator",
     "end" : true,
-    "message": "Félicitations ! Vous avez accompagné Mr Chérif avec rigueur, empathie et pédagogie. Il repart soulagé, informé et motivé à changer ses habitudes ! \n maintenant vous été capable de \n Identifier les signes cliniques d’une crise de goutte \n Prescrire les examens complémentaires utiles au diagnostic \n Savoir différencier une arthrite microcristalline d’une arthrite septique \n Connaître le traitement de la crise et le traitement de fond de goutte \n Prodiguer des conseils hygiéno-diététiques pertinents "
+    "narr" : "Vous avez accompagné Mr Chérif avec rigueur, empathie et pédagogie. Il repart soulagé, informé et motivé à changer ses habitudes !",
+    "message": "Identifier les signes cliniques d’une crise de goutte \n Prescrire les examens complémentaires utiles au diagnostic \n Savoir différencier une arthrite microcristalline d’une arthrite septique \n Connaître le traitement de la crise et le traitement de fond de goutte \n Prodiguer des conseils hygiéno-diététiques pertinents "
   }
 ]

@@ -27,6 +27,7 @@ interface GameStep {
   };
   next?: number;
   end?: boolean;
+  narr?: string;
 }
 
 @Component({
@@ -48,6 +49,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   pafAudio: HTMLAudioElement;
   backgroundAudio: HTMLAudioElement;
   failAudio: HTMLAudioElement;
+  BravoAudio: HTMLAudioElement;
 
   profileImages: { [key: string]: string } = {
     mme_monia: 'assets/character/monia.png',
@@ -88,6 +90,10 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.failAudio = new Audio('assets/sound/wrong.mp3');
     this.failAudio.volume = 0.04;
     this.failAudio.load();
+
+    this.BravoAudio = new Audio('assets/sound/Bravo.mp3');
+    this.BravoAudio.volume = 0.04;
+    this.BravoAudio.load();
   }
 
   ngOnInit(): void {
@@ -97,7 +103,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.loadScenario();
     });
 
-    // Start background music after user interaction
     this.playBackgroundSound();
   }
 
@@ -113,7 +118,6 @@ export class ChatComponent implements OnInit, OnDestroy {
           'Background audio may be blocked until user interacts:',
           err
         );
-        // Fallback: Play when the user clicks anywhere
         const resumeAudio = () => {
           this.backgroundAudio.play();
           document.removeEventListener('click', resumeAudio);
@@ -151,14 +155,20 @@ export class ChatComponent implements OnInit, OnDestroy {
     const step = this.scenario[this.currentIndex];
     if (!step) return;
 
-    // ✅ Handle end of scenario
     if (step.end) {
+      try {
+        this.BravoAudio.currentTime = 0;
+        await this.BravoAudio.play();
+      } catch (err) {
+        console.warn('Bravo sound play blocked:', err);
+      }
+
       this.dialog.open(EndScenarioDialogComponent, {
-        data: { message: step.message },
+        data: { message: step.message, narr: step.narr },
         width: '600px',
         disableClose: true,
       });
-      return; // stop processing further steps
+      return;
     }
 
     if (step.role === 'game') {

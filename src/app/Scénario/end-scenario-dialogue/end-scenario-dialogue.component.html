@@ -1,11 +1,15 @@
 <div class="mat-dialog-container p-0">
-  <div class="modal-content bg-light p-4 rounded shadow">
-    <div class="modal-header border-0">
-      <h5 class="modal-title text-success">🎉 Félicitations !</h5>
+  <div class="modal-content bg-light p-4 rounded shadow text-center">
+    <div class="modal-header border-0 justify-content-center">
+      <h3 class="modal-title text-success fw-bold">🎉 Félicitations !</h3>
     </div>
 
     <div class="modal-body">
-      <p class="mb-0 text-dark" style="white-space: pre-line">
+      <p class="body-text text-dark" style="white-space: pre-line;">
+        {{ data.narr }}
+      </p>
+      <h5 class="subtitle text-secondary mb-3">Maintenant, vous êtes capable de :</h5>
+      <p class="body-text text-dark" style="white-space: pre-line;">
         {{ data.message }}
       </p>
     </div>

@@ -27,7 +27,7 @@ export class QuestionDialogComponent {
   objectKeys = (obj: any): string[] => (obj ? Object.keys(obj) : []);
 
   onOptionChange(key: string): void {
-    console.log('Selected option changed:', key, this.selectedOptions[key]);
+    //console.log('Selected option changed:', key, this.selectedOptions[key]);
   }
 
   submitAnswer(): void {
