@@ -55,16 +55,19 @@ export class ChatComponent implements OnInit, OnDestroy {
     mme_monia: 'assets/character/monia.png',
     me: 'assets/character/doc.png',
     mr_cherif: 'assets/character/Cherif.png',
+    mme_aida: 'assets/character/Aida.png',
   };
   displayNames: { [key: string]: string } = {
     mme_monia: 'Madame Monia',
     mr_cherif: 'Monsieur Cherif',
     me: 'Vous',
+    mme_aida: 'Madame Aida',
   };
 
   scenarioTitles: { [key: string]: string } = {
     scenario1: 'Osteogame',
     scenario2: 'Mission inflammation !',
+    scenario3: 'Gonar’Xpert',
   };
 
   constructor(

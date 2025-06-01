@@ -1,0 +1,373 @@
+[
+  {
+    "id": 1,
+    "role": "narrator",
+    "message": " Vous êtes médecin généraliste. Mme Aida, 64 ans, vient consulter pour une douleur du genou droit, évoluant depuis plusieurs mois, gênant sa marche et sa vie quotidienne. Elle est secrétaire et en surpoids. \n C’est à vous de jouer, Docteur ! "
+  } , 
+  {
+    "id": 2,
+    "role": "mme_aida",
+    "message": "J’ai mal au genou depuis des mois, surtout quand je marche… qu’est ce que ça peut être docteur?"
+  },
+  {
+    "id": 3,
+    "role": "game",
+    "question": "Question 1 : J’ai mal au genou depuis des mois, surtout quand je marche… qu’est ce que ça peut être docteur?",
+    "options": {
+      "A": {
+        "text": "A : C’est sûrement une tendinite, mettez votre genou au repos",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : On va faire une ponction du genou et voir. ",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : C’est normal à votre âge, rien à faire. ",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Il faut explorer toute douleur articulaire, quel que soit l’âge.",
+        "isCorrect": true
+      },
+      "E": {
+        "text": "E : Faites-vous un bandage au genou et reposez-vous ",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id": 4,
+    "role": "me",
+    "message": "Il faut explorer toute douleur articulaire, quel que soit l’âge."
+  },
+  {
+    "id": 5,
+    "role": "narrator",
+    "message": " D est la bonne réponse. Toute douleur articulaire chronique doit être explorée."
+  },
+  {
+    "id": 6,
+    "role": "mme_aida",
+    "message": "Il y a des jours où j’ai l'impression que mon genou gonfle un peu, c’est grave ?"
+  },
+   {
+    "id": 7,
+    "role": "game",
+    "question": "Question 2 : Il y a des jours où j’ai l'impression que mon genou gonfle un peu, c’est grave ?",
+    "options": {
+      "A": {
+        "text": "A : Non, c’est fréquent à votre âge",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Oui, ça évoque une infection. ",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Ce gonflement peut faire partie d’une poussée inflammatoire de gonarthrose.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "D : C’est sûrement une entorse, même sans traumatisme.",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : Vous devriez faire une IRM du genou. ",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id": 8,
+    "role": "me",
+    "message": "Ce gonflement peut faire partie d’une poussée inflammatoire de gonarthrose."
+  },
+  {
+    "id": 9,
+    "role": "narrator",
+    "message": "La gonarthrose peut s'accompagner d’épanchements articulaires intermittents, sans infection."
+  },
+  {
+    "id": 10,
+    "role": "mme_aida",
+    "message": "Quels autres éléments cliniques sont évocateurs d’une gonarthrose ?"
+  },
+  {
+    "id": 11,
+    "role": "game",
+    "multipleChoice": true,
+    "question": "Question 3 : Quels autres éléments cliniques sont évocateurs d’une gonarthrose ?",
+    "options": {
+      "A": {
+        "text": "A : Douleur à la marche prolongée",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "B : Douleur à la monté des escaliers",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "C : Réveil nocturne multiple ",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Raideur matinale à 30 min ",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : Douleur à la descente des escaliers",
+        "isCorrect": true
+      }
+    }
+  },
+  {
+    "id": 12,
+    "role": "me",
+    "message": "Douleur à la marche prolongée "
+  },
+  {
+    "id": 13,
+    "role": "me",
+    "message": "Douleur à la monté des escaliers "
+  },
+  {
+    "id": 14,
+    "role": "me",
+    "message": "Douleur à la descente des escaliers"
+  },
+  {
+    "id": 15,
+    "role": "narrator",
+    "message": "Les douleurs mécaniques (à l'effort, soulagées par le repos) et la raideur brève (<30 mn), réveillée par la monté ou la descente des escaliers. Pas de fièvre ni d'inflammation systémique."
+  },
+  {
+    "id": 16,
+    "role": "mme_aida",
+    "message": "Vous allez me faire faire des radios, hein docteur ? "
+  },
+  {
+    "id": 17,
+    "role": "game",
+    "question": "Question 4 : Vous allez me faire faire des radios, hein docteur ?",
+    "options": {
+      "A": {
+        "text": "A : Radiographie du genou de face et de profil en charge est le premier examen. ",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "B : Échographie du genou suffit ",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Arthroscanner du genou",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : On va commencer un traitement d’abord. ",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : IRM du genou",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id": 18,
+    "role": "me",
+    "message": "Radiographie du genou de face et de profil en charge est le premier examen."
+  },
+  {
+    "id":19,
+    "role" : "narrator",
+    "message": " La radiographie standard suffit pour poser le diagnostic d’arthrose"
+  },
+  {
+    "id":20,
+    "role" : "mme_aida",
+    "message": "Voilà mes radios ! Vous voyez ce que j’ai ?"
+  },
+  {
+    "id": 21,
+    "role": "game",
+    "question": "Question 5 : Radiographie : pincement articulaire interne droit, ostéophytes, géode sous chondrale ( ou image) ",
+    "options": {
+      "A": {
+        "text": "A : Arthrose fémoro-patellaire.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Gonarthrose fémoro-tibiale interne",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "C : Arthrite septique ",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Ostéonécrose fémorale",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : Rhumatisme à pyrophosphate de calcium",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id":22,
+    "role" : "me",
+    "message": "Gonarthrose fémoro-tibiale interne"
+  },
+  {
+    "id":23,
+    "role" : "narrator",
+    "message": "Le pincement articulaire et les ostéophytes sont les signes classiques de la gonarthrose."
+  },
+  {
+    "id":24,
+    "role" : "mme_aida",
+    "message": "Et côté prise de sang, vous me faites quoi ?"
+  },
+  {
+    "id": 25,
+    "role": "game",
+    "multipleChoice": true,
+    "question": "Question 6 : Et côté prise de sang, vous me faites quoi ?",
+    "options": {
+      "A": {
+        "text": "A : Rien, aucun intérêt.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "B : Facteur rhumatoïde et anti-CCP.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Bilan inflammatoire uniquement.  ",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "D : Bilan standard pour éliminer une autre pathologie : NFS, CRP, VS, acide urique si doute diagnostique.",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : Bilan hépatique.",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id":26,
+    "role" : "me",
+    "message": "Rien, aucun intérêt."
+  },
+  {
+    "id":27,
+    "role" : "narrator",
+    "message": "Un bilan biologique n’est demandé qu'en cas de doute ou pour éliminer une arthropathie secondaire. Ainsi si un bilan biologique est demandé, il sera normal car l’arthrose n'entraîne pas d’inflammation majeure."
+  },
+  {
+    "id":28,
+    "role" : "mme_aida",
+    "message": "Mais ça se soigne, docteur ?"
+  },
+  {
+    "id": 29,
+    "role": "game",
+    "question": "Question 7 : Mais ça se soigne, docteur ?",
+    "options": {
+      "A": {
+        "text": "A : Non, il faut vivre avec.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Oui, repos strict et immobilisation ",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Oui, on commence par les antalgiques, puis les AINS si besoin.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "D : Colchicine ",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : BInjection de corticoïdes.",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id":30,
+    "role" : "me",
+    "message": "Oui, on commence par les antalgiques, puis les AINS si besoin. "
+  },
+  {
+    "id":31,
+    "role" : "narrator",
+    "message": "Le traitement est progressif, débutant par les mesures simples : antalgiques,  AINS, viscosupplémentation… Les injections de corticoïdes sont indiquées en cas de  poussée congestive ) "
+  },
+  {
+    "id":32,
+    "role" : "mme_aida",
+    "message": "Que puis-je faire au quotidien, docteur ?"
+  },
+  {
+    "id": 33,
+    "role": "game",
+    "multipleChoice": true,
+    "question": "Question 8 : Que puis-je faire au quotidien, docteur ?",
+    "options": {
+      "A": {
+        "text": "A : Rien, reposez-vous et  évitez toute activité ",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "B : Perdez du poids, faites du yoga, taï chi .",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "C : Marche quotidienne adaptée.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "D : Evitez les escaliers.",
+        "isCorrect": true
+      },
+      "E": {
+        "text": "E : Achetez un fauteuil roulant, au cas où",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id":34,
+    "role" : "me",
+    "message": "Perdez du poids, faites du yoga, taï chi . "
+  },
+  {
+    "id":35,
+    "role" : "me",
+    "message": "Marche quotidienne adaptée."
+  },
+  {
+    "id":36,
+    "role" : "me",
+    "message": "Evitez les escaliers."
+  },
+  {
+    "id":37,
+    "role" : "narrator",
+    "message": "L’activité physique modérée et la perte de poids réduisent considérablement les douleurs et la progression."
+  },
+  {
+    "id": 38,
+    "role": "narrator",
+    "end" : true,
+    "narr" : "Vous avez accompagné Mme Aida avec sérieux et empathie, en menant une démarche diagnostique rigoureuse et une prise en charge adaptée. Elle repart rassurée et motivée pour améliorer son quotidien !",
+    "message": "Identifier les signes cliniques d’une gonarthrose \n Connaître les examens complémentaires à demander \n Éliminer les diagnostics différentiels \n Prescrire les traitements médicamenteux et non médicamenteux \n Conseiller les mesures hygiéno-diététiques \n Connaître les indications chirurgicales  "
+  }
+]
