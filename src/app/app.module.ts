@@ -22,6 +22,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RetryModalComponent } from './Scénario/retry-modal/retry-modal.component';
 import { EndScenarioDialogComponent } from './Scénario/end-scenario-dialogue/end-scenario-dialogue.component';
+import { AproposComponent } from './shared/apropos/apropos.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { EndScenarioDialogComponent } from './Scénario/end-scenario-dialogue/en
     QuestionDialogComponent,
     RetryModalComponent,
     EndScenarioDialogComponent,
+    AproposComponent,
   ],
   imports: [
     MatDialogModule,
