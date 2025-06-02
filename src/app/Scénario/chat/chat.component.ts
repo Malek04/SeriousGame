@@ -286,9 +286,12 @@ export class ChatComponent implements OnInit, OnDestroy {
       confirmButtonText: 'Oui, réessayer!',
       cancelButtonText: "Non, revenir à l'accueil!",
       reverseButtons: true,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.reloadGame();
+        Swal.close();
+        //this.reloadGame();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         window.location.href = '';
       }
