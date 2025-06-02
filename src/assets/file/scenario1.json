@@ -45,7 +45,7 @@
   {
     "id": 6,
     "role": "me",
-    "message": "Vous Ne vous inquiétez pas madame Monia. Venez moi voir et on va faire le point ensembles"
+    "message": "Ne vous inquiétez pas madame Monia. Venez me voir et on va faire le point ensembles"
   },
   {
     "id": 7,
@@ -84,7 +84,7 @@
   {
     "id": 9,
     "role": "mme_monia",
-    "message": "Ma mère s'était cassé la hanche... mais elle avait 85 ans ! Et moi je bouge tout le temps et je fais toujours mes cours de danse."
+    "message": "Ma mère s'était cassée la hanche... mais elle avait 85 ans ! Et moi je bouge tout le temps et je fais toujours mes cours de danse."
   },
   {
     "id": 10,
@@ -424,6 +424,6 @@
     "id": 44,
     "role": "narrator",
     "end" : true,
-    "message": "Identifié une fracture de fragilité \n Réalisé les explorations nécessaires (DMO + bilan) \n Posé le diagnostic d’ostéoporose sévère \n Mis en place un traitement adapté \n Conseillé les bonnes mesures de prévention \n Organisé une surveillance à long terme "
+    "message": "-Identifié une fracture de fragilité \n -Réalisé les explorations nécessaires (DMO + bilan) \n -Posé le diagnostic d’ostéoporose sévère \n -Mis en place un traitement adapté \n -Conseillé les bonnes mesures de prévention \n -Organisé une surveillance à long terme "
   }
 ]
