@@ -45,7 +45,7 @@
   {
     "id": 6,
     "role": "me",
-    "message": "Ne vous inquiétez pas madame Monia. Venez me voir et on va faire le point ensembles"
+    "message": "Ne vous inquiétez pas madame Monia. Venez me voir et nous allons faire le point ensembles"
   },
   {
     "id": 7,
@@ -197,7 +197,7 @@
   {
     "id": 20,
     "role": "narrator",
-    "message": "Résultats du bilan biologique \n Calcémie: 21 mmol/l. \nThosphorêtnie: L1 mmol/L. \nCreatinine: 70 µmol/L \n Albumine: 32 g/L \n EPP: Pas de pic monoclorual"
+    "message": "Résultats du bilan biologique \n Calcémie: 21 mmol/l. \nThosphorêtnie: L1 mmol/L. \nCreatinine: 70 µmol/L \n Albumine: 32 g/L\n phosphatémie : 1\n PAL : 110 U/L \n EPP: Pas de pic Monoclonal"
   },
   {
     "id": 21,
@@ -369,7 +369,7 @@
   {
     "id": 38,
     "role": "mme_monia",
-    "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur ?"
+    "message": "Bon... je vais troquer mes talons contre des baskets. Mais mes cours de danse, je les garde, hein docteur. Quelle surveillance doit être mise en place ?"
   },
   {
     "id": 39,
@@ -424,6 +424,6 @@
     "id": 44,
     "role": "narrator",
     "end" : true,
-    "message": "-Identifié une fracture de fragilité \n -Réalisé les explorations nécessaires (DMO + bilan) \n -Posé le diagnostic d’ostéoporose sévère \n -Mis en place un traitement adapté \n -Conseillé les bonnes mesures de prévention \n -Organisé une surveillance à long terme "
+    "message": "-Identifier une fracture de fragilité \n -Réaliser les explorations nécessaires (DMO + bilan) \n -Poser le diagnostic d’ostéoporose sévère \n -Mettre en place un traitement adapté \n -Conseiller les bonnes mesures de prévention \n -Organiser une surveillance à long terme "
   }
 ]

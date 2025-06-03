@@ -5,6 +5,8 @@ import {
   ViewChild,
   ElementRef,
   OnDestroy,
+  AfterViewInit,
+  NgZone,
 } from '@angular/core';
 import { EndScenarioDialogComponent } from '../end-scenario-dialogue/end-scenario-dialogue.component';
 import { ActivatedRoute } from '@angular/router';
@@ -35,7 +37,7 @@ interface GameStep {
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css'],
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('chatBox') chatBox!: ElementRef;
 
   scenario: GameStep[] = [];
@@ -74,7 +76,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private http: HttpClient,
     private cdRef: ChangeDetectorRef,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private ngZone: NgZone
   ) {
     this.typingAudio = new Audio('assets/sound/typing.mp3');
     this.typingAudio.loop = true;
@@ -107,6 +110,10 @@ export class ChatComponent implements OnInit, OnDestroy {
     });
 
     this.playBackgroundSound();
+  }
+
+  ngAfterViewInit(): void {
+    this.scrollToBottom();
   }
 
   ngOnDestroy(): void {
@@ -148,10 +155,16 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   scrollToBottom(): void {
-    try {
-      this.chatBox.nativeElement.scrollTop =
-        this.chatBox.nativeElement.scrollHeight;
-    } catch (err) {}
+    this.ngZone.runOutsideAngular(() => {
+      setTimeout(() => {
+        requestAnimationFrame(() => {
+          if (this.chatBox?.nativeElement) {
+            this.chatBox.nativeElement.scrollTop =
+              this.chatBox.nativeElement.scrollHeight;
+          }
+        });
+      }, 50);
+    });
   }
 
   async playNext(): Promise<void> {
@@ -177,6 +190,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     if (step.role === 'game') {
       this.pendingQuestion = { data: step };
       this.cdRef.detectChanges();
+      this.scrollToBottom();
       return;
     }
 
@@ -291,7 +305,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.close();
-        //this.reloadGame();
+        this.reloadGame();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         window.location.href = '';
       }

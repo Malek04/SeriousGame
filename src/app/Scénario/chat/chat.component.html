@@ -19,94 +19,93 @@
   <div class="progress-bar">
     <div
       class="progress"
-      [style.width.%]="
-        scenario.length > 0 ? (currentIndex / scenario.length) * 100 : 0
-      "
+      [style.width.%]="scenario.length > 0 ? ((currentIndex + 1) / scenario.length) * 100 : 0"
     ></div>
   </div>
 
-  <!-- Scrollable Chat Section -->
-  <div class="chat-scroll" #chatBox>
-    <div
-      *ngFor="let entry of chatHistory"
-      class="chat-row"
-      [ngClass]="{
-        right: entry.from === 'me',
-        narrator: entry.from === 'narrator',
-        left: entry.from !== 'me' && entry.from !== 'narrator'
-      }"
-    >
-      <!-- Narrator -->
+  <!-- Chat Body with Scrollable Content and Fixed Question -->
+  <div class="chat-body">
+    <!-- Scrollable Chat Section -->
+    <div class="chat-scroll" #chatBox>
+      <!-- Chat History -->
       <div
-        *ngIf="entry.type === 'message' && entry.from === 'narrator'"
-        class="chat-bubble narrator"
+        *ngFor="let entry of chatHistory"
+        class="chat-row"
+        [ngClass]="{
+          right: entry.from === 'me',
+          narrator: entry.from === 'narrator',
+          left: entry.from !== 'me' && entry.from !== 'narrator'
+        }"
       >
-        <div class="message-text narrator-text">
-          <span>{{ entry.displayedText }}</span>
-        </div>
-      </div>
-
-      <!-- Other Message Types -->
-      <ng-container
-        *ngIf="entry.type === 'message' && entry.from !== 'narrator'"
-      >
+        <!-- Narrator -->
         <div
-          class="message-container"
-          [ngClass]="entry.from === 'me' ? 'me' : 'other'"
+          *ngIf="entry.type === 'message' && entry.from === 'narrator'"
+          class="chat-bubble narrator"
         >
-          <div class="speaker-name">
-            {{ displayNames[entry.from] || (entry.from | titlecase) }}
+          <div class="message-text narrator-text">
+            <span>{{ entry.displayedText }}</span>
           </div>
+        </div>
 
-          <div class="message-wrapper">
-            <img
-              [src]="entry.imageUrl"
-              alt="Profile Image"
-              class="profile-image"
-            />
-            <div
-              class="chat-bubble"
-              [ngClass]="{
-                'madame-monia': entry.from === 'mme_monia',
-                'monsieur-cherif': entry.from === 'mr_cherif',
-                'madame-aida': entry.from === 'mme_aida',
-                me: entry.from === 'me'
-              }"
-            >
+        <!-- Other Messages -->
+        <ng-container
+          *ngIf="entry.type === 'message' && entry.from !== 'narrator'"
+        >
+          <div
+            class="message-container"
+            [ngClass]="entry.from === 'me' ? 'me' : 'other'"
+          >
+            <div class="speaker-name">
+              {{ displayNames[entry.from] || (entry.from | titlecase) }}
+            </div>
+
+            <div class="message-wrapper">
+              <img
+                [src]="entry.imageUrl"
+                alt="Profile Image"
+                class="profile-image"
+              />
               <div
-                class="message-text"
+                class="chat-bubble"
                 [ngClass]="{
-                  'typing-switch':
-                    entry.from === 'mme_monia' || entry.from === 'me'
+                  'madame-monia': entry.from === 'mme_monia',
+                  'monsieur-cherif': entry.from === 'mr_cherif',
+                  'madame-aida': entry.from === 'mme_aida',
+                  me: entry.from === 'me'
                 }"
               >
-                <span *ngIf="entry.partial" class="dots">...</span>
-                <span *ngIf="!entry.partial" class="real-message">{{
-                  entry.text
-                }}</span>
+                <div
+                  class="message-text"
+                  [ngClass]="{
+                    'typing-switch':
+                      entry.from === 'mme_monia' || entry.from === 'me'
+                  }"
+                >
+                  <span *ngIf="entry.partial" class="dots">...</span>
+                  <span *ngIf="!entry.partial" class="real-message">
+                    {{ entry.text }}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
+        </ng-container>
+
+        <!-- Feedback -->
+        <div
+          *ngIf="entry.type === 'answer' && entry.feedback && entry.feedback.trim() !== ''"
+          class="chat-bubble"
+          [ngClass]="{ correct: entry.correct, incorrect: !entry.correct }"
+        >
+          <em>Feedback: {{ entry.feedback }}</em>
         </div>
-      </ng-container>
-
-      <!-- Feedback -->
-      <div
-        *ngIf="
-          entry.type === 'answer' &&
-          entry.feedback &&
-          entry.feedback.trim() !== ''
-        "
-        class="chat-bubble"
-        [ngClass]="{ correct: entry.correct, incorrect: !entry.correct }"
-      >
-        <em>Feedback: {{ entry.feedback }}</em>
       </div>
+    </div>
 
-      <!-- Fixed Question Button -->
+    <!-- Question at the Bottom of Chat -->
+    <div class="chat-row question-row" *ngIf="pendingQuestion">
       <div
-        class="fixed-question"
-        *ngIf="pendingQuestion"
+        class="chat-bubble question-bubble"
         (click)="openQuestionModal(pendingQuestion)"
       >
         {{ pendingQuestion.data.question }}
