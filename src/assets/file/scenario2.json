@@ -2,7 +2,7 @@
   {
     "id": 1,
     "role": "narrator",
-    "message": "Vous êtes médecin généraliste. Mr Chérif, 52 ans, consulte pour une douleur brutale de la cheville gauche survenue depuis 5 jours, sans traumatisme apparent. Il boîte et semble agacé. \n À vous de mener l’enquête clinique pour poser le bon diagnostic et proposer un traitement adapté ! "
+    "message": "Vous êtes médecin généraliste. Mr Chérif, 52 ans, Consulte pour une douleur et tuméfaction brutale de la cheville gauche depuis 5 jours, sans traumatisme apparent. Il boîte et semble agacé. \n À vous de mener l’enquête clinique pour poser le bon diagnostic et proposer un traitement adapté ! "
   },
   {
     "id": 2,
@@ -166,7 +166,7 @@
   {
     "id": 15,
     "role": "me",
-    "message": "L’échographie permet de rechercher des signes en faveur d’une goutte tel que l’aspect en double contour "
+    "message": "L'échographie permet de rechercher des signes en faveur d'une goutte tel que l'aspect en tempête de neige"
   },
   {
     "id": 16,

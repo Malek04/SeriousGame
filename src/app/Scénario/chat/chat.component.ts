@@ -305,7 +305,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.close();
-        this.reloadGame();
+        //this.reloadGame();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         window.location.href = '';
       }

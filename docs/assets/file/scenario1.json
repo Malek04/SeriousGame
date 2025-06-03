@@ -45,7 +45,7 @@
   {
     "id": 6,
     "role": "me",
-    "message": "Ne vous inquiétez pas madame Monia. Venez me voir et nous allons faire le point ensembles"
+    "message": "Ne vous inquiétez pas madame Monia. Venez me voir et nous allons faire le point ensemble."
   },
   {
     "id": 7,
@@ -167,7 +167,7 @@
     "question": "Question 5 : Quels examens biologiques prescrire pour compléter le diagnostic?",
     "options": {
       "A": {
-        "text": "A : Bilan renal",
+        "text": "A : Bilan rénal",
         "isCorrect": true
       },
       "B": {
@@ -197,7 +197,7 @@
   {
     "id": 20,
     "role": "narrator",
-    "message": "Résultats du bilan biologique \n Calcémie: 21 mmol/l. \nThosphorêtnie: L1 mmol/L. \nCreatinine: 70 µmol/L \n Albumine: 32 g/L\n phosphatémie : 1\n PAL : 110 U/L \n EPP: Pas de pic Monoclonal"
+    "message": "Résultats du bilan biologique \n Calcémie: 2.1 mmol/l. \n phosphatémie: 1 mmol/L  \nCreatinine: 70 µmol/L \n Albumine: 32 g/L\n PAL : 110 U/L \n EPP: Pas de pic Monoclonal"
   },
   {
     "id": 21,
@@ -209,7 +209,7 @@
         "isCorrect": true
       },
       "B": {
-        "text": "B : Hypocalcemie",
+        "text": "B : Hypocalcémie",
         "isCorrect": false
       },
       "C": {
@@ -217,7 +217,7 @@
         "isCorrect": false
       },
       "D": {
-        "text": "D : Hypophosphorémie",
+        "text": "D : Hypophosphatémie",
         "isCorrect": false
       }
     },
