@@ -43,16 +43,11 @@
   },
   {
     "id": 5,
-    "role": "narrator",
-    "message": " D est la bonne réponse. Toute douleur articulaire chronique doit être explorée."
-  },
-  {
-    "id": 6,
     "role": "mme_aida",
     "message": "Il y a des jours où j’ai l'impression que mon genou gonfle un peu, c’est grave ?"
   },
    {
-    "id": 7,
+    "id": 6,
     "role": "game",
     "question": "Question 2 : Il y a des jours où j’ai l'impression que mon genou gonfle un peu, c’est grave ?",
     "options": {
@@ -79,22 +74,12 @@
     }
   },
   {
-    "id": 8,
+    "id": 7,
     "role": "me",
     "message": "Ce gonflement peut faire partie d’une poussée inflammatoire de gonarthrose."
   },
   {
-    "id": 9,
-    "role": "narrator",
-    "message": "La gonarthrose peut s'accompagner d’épanchements articulaires intermittents, sans infection."
-  },
-  {
-    "id": 10,
-    "role": "mme_aida",
-    "message": "Quels autres éléments cliniques sont évocateurs d’une gonarthrose ?"
-  },
-  {
-    "id": 11,
+    "id": 8,
     "role": "game",
     "multipleChoice": true,
     "question": "Question 3 : Quels autres éléments cliniques sont évocateurs d’une gonarthrose ?",
@@ -122,32 +107,22 @@
     }
   },
   {
-    "id": 12,
+    "id" : 9,
     "role": "me",
-    "message": "Douleur à la marche prolongée "
+    "message":"Dites-moi, madame, avez-vous une douleur après une marche prolongée ou lors de la descente ou de la montée des escaliers ?"
   },
   {
-    "id": 13,
-    "role": "me",
-    "message": "Douleur à la monté des escaliers "
+    "id" : 10,
+    "role": "mme_aida",
+    "message":"Oui, docteur, la douleur est particulièrement présente lorsque je monte les escaliers ou que je me rends à pied au marché."
   },
   {
-    "id": 14,
-    "role": "me",
-    "message": "Douleur à la descente des escaliers"
-  },
-  {
-    "id": 15,
-    "role": "narrator",
-    "message": "Les douleurs mécaniques (à l'effort, soulagées par le repos) et la raideur brève (<30 mn), réveillée par la monté ou la descente des escaliers. Pas de fièvre ni d'inflammation systémique."
-  },
-  {
-    "id": 16,
+    "id": 11,
     "role": "mme_aida",
     "message": "Vous allez me faire faire des radios, hein docteur ? "
   },
   {
-    "id": 17,
+    "id": 12,
     "role": "game",
     "question": "Question 4 : Vous allez me faire faire des radios, hein docteur ?",
     "options": {
@@ -174,24 +149,19 @@
     }
   },
   {
-    "id": 18,
+    "id": 13,
     "role": "me",
     "message": "Radiographie du genou de face et de profil en charge est le premier examen."
   },
   {
-    "id":19,
-    "role" : "narrator",
-    "message": " La radiographie standard suffit pour poser le diagnostic d’arthrose"
-  },
-  {
-    "id":20,
+    "id":14,
     "role" : "mme_aida",
     "message": "Voilà mes radios ! Vous voyez ce que j’ai ?"
   },
   {
-    "id": 21,
+    "id": 15,
     "role": "game",
-    "question": "Question 5 : Radiographie : pincement articulaire interne droit, ostéophytes, géode sous chondrale ( ou image) ",
+    "question": "Question 5 : Radiographie : pincement articulaire interne droit, ostéophytes, géode sous chondrale",
     "options": {
       "A": {
         "text": "A : Arthrose fémoro-patellaire.",
@@ -216,22 +186,22 @@
     }
   },
   {
-    "id":22,
+    "id":16,
     "role" : "me",
     "message": "Gonarthrose fémoro-tibiale interne"
   },
   {
-    "id":23,
+    "id":17,
     "role" : "narrator",
     "message": "Le pincement articulaire et les ostéophytes sont les signes classiques de la gonarthrose."
   },
   {
-    "id":24,
+    "id":18,
     "role" : "mme_aida",
     "message": "Et côté prise de sang, vous me faites quoi ?"
   },
   {
-    "id": 25,
+    "id": 19,
     "role": "game",
     "multipleChoice": true,
     "question": "Question 6 : Et côté prise de sang, vous me faites quoi ?",
@@ -249,7 +219,7 @@
         "isCorrect": false
       },
       "D": {
-        "text": "D : Bilan standard pour éliminer une autre pathologie : NFS, CRP, VS, acide urique si doute diagnostique.",
+        "text": "D : Calcémie et les phosphatases alcalines.",
         "isCorrect": false
       },
       "E": {
@@ -259,22 +229,22 @@
     }
   },
   {
-    "id":26,
+    "id":20,
     "role" : "me",
     "message": "Rien, aucun intérêt."
   },
   {
-    "id":27,
+    "id":21,
     "role" : "narrator",
     "message": "Un bilan biologique n’est demandé qu'en cas de doute ou pour éliminer une arthropathie secondaire. Ainsi si un bilan biologique est demandé, il sera normal car l’arthrose n'entraîne pas d’inflammation majeure."
   },
   {
-    "id":28,
+    "id":22,
     "role" : "mme_aida",
     "message": "Mais ça se soigne, docteur ?"
   },
   {
-    "id": 29,
+    "id": 23,
     "role": "game",
     "question": "Question 7 : Mais ça se soigne, docteur ?",
     "options": {
@@ -283,40 +253,36 @@
         "isCorrect": false
       },
       "B": {
-        "text": "B : Oui, repos strict et immobilisation ",
-        "isCorrect": false
-      },
-      "C": {
-        "text": "C : Oui, on commence par les antalgiques, puis les AINS si besoin.",
+        "text": "B : Oui, on commence par les antalgiques, puis les AINS si besoin.",
         "isCorrect": true
       },
-      "D": {
-        "text": "D : Colchicine ",
+      "C": {
+        "text": "C : Colchicine ",
         "isCorrect": false
       },
-      "E": {
-        "text": "E : BInjection de corticoïdes.",
+      "D": {
+        "text": "D : BInjection de corticoïdes.",
         "isCorrect": false
       }
     }
   },
   {
-    "id":30,
+    "id":24,
     "role" : "me",
     "message": "Oui, on commence par les antalgiques, puis les AINS si besoin. "
   },
   {
-    "id":31,
+    "id":25,
     "role" : "narrator",
     "message": "Le traitement est progressif, débutant par les mesures simples : antalgiques,  AINS, viscosupplémentation… Les injections de corticoïdes sont indiquées en cas de  poussée congestive ) "
   },
   {
-    "id":32,
+    "id":26,
     "role" : "mme_aida",
     "message": "Que puis-je faire au quotidien, docteur ?"
   },
   {
-    "id": 33,
+    "id": 27,
     "role": "game",
     "multipleChoice": true,
     "question": "Question 8 : Que puis-je faire au quotidien, docteur ?",
@@ -344,27 +310,27 @@
     }
   },
   {
-    "id":34,
+    "id":28,
     "role" : "me",
     "message": "Perdez du poids, faites du yoga, taï chi . "
   },
   {
-    "id":35,
+    "id":29,
     "role" : "me",
     "message": "Marche quotidienne adaptée."
   },
   {
-    "id":36,
+    "id":30,
     "role" : "me",
     "message": "Evitez les escaliers."
   },
   {
-    "id":37,
+    "id":31,
     "role" : "narrator",
     "message": "L’activité physique modérée et la perte de poids réduisent considérablement les douleurs et la progression."
   },
   {
-    "id": 38,
+    "id": 32,
     "role": "narrator",
     "end" : true,
     "narr" : "Vous avez accompagné Mme Aida avec sérieux et empathie, en menant une démarche diagnostique rigoureuse et une prise en charge adaptée. Elle repart rassurée et motivée pour améliorer son quotidien !",
