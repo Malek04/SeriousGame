@@ -2,7 +2,7 @@
   {
     "id": 1,
     "role": "narrator",
-    "message": " Vous êtes médecin généraliste. Mme Aida, 64 ans, vient consulter pour une douleur du genou droit, évoluant depuis plusieurs mois, gênant sa marche et sa vie quotidienne. Elle est secrétaire et en surpoids. \n C’est à vous de jouer, Docteur ! "
+    "message": " Vous êtes médecin généraliste. Mme Aida, 64 ans, vient consulter pour une douleur du genou gauche, évoluant depuis plusieurs mois, gênant sa marche et sa vie quotidienne. Elle est secrétaire et en surpoids. \n C’est à vous de jouer, Docteur ! "
   } , 
   {
     "id": 2,
@@ -154,17 +154,70 @@
     "message": "Radiographie du genou de face et de profil en charge est le premier examen."
   },
   {
-    "id":14,
+    "id": 14,
+    "role": "narrator",
+    "message": "Madame Aida revient vous voir le lendemain."
+  },
+  {
+    "id":15,
     "role" : "mme_aida",
     "message": "Voilà mes radios ! Vous voyez ce que j’ai ?"
   },
   {
-    "id": 15,
+    "id":16,
+    "role" : "mme_aida",
+    "message": "<img src='assets/scenario 3/radio face.jpg' alt='Radiographie du genou gauche face' />"
+  },
+  {
+    "id":17,
+    "role" : "mme_aida",
+    "message": "<img src='assets/scenario 3/radio profil.jpg' alt='Radiographie du genou gauche profil' />"
+  },
+  {
+    "id": 18,
     "role": "game",
-    "question": "Question 5 : Radiographie : pincement articulaire interne droit, ostéophytes, géode sous chondrale",
+    "multipleChoice": true,
+    "question": "Question 5 : Voilà mes radios ! Vous voyez ce que j’ai ?",
     "options": {
       "A": {
-        "text": "A : Arthrose fémoro-patellaire.",
+        "text": "A : Présence d’ostéophytes.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "B : Liseré calcique articulaire.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "C : Pincement de l’interligne fémoro-tibial. ",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "D : Pincement de l’interligne fémoro-patellaire.",
+        "isCorrect": false
+      },
+      "E": {
+        "text": "E : Géode sous-chondrale.",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id": 19,
+    "role": "me",
+    "message": "Présence d’ostéophytes"
+  },
+  {
+    "id": 20,
+    "role": "me",
+    "message": "Pincement de l’interligne fémoro-tibial."
+  },
+  {
+    "id": 21,
+    "role": "game",
+    "question": "Question 6 : Quel est votre diagnostic ?",
+    "options": {
+      "A": {
+        "text": "A : Gonarthrose fémoro-patellaire.",
         "isCorrect": false
       },
       "B": {
@@ -186,25 +239,25 @@
     }
   },
   {
-    "id":16,
+    "id":22,
     "role" : "me",
     "message": "Gonarthrose fémoro-tibiale interne"
   },
   {
-    "id":17,
+    "id":23,
     "role" : "narrator",
     "message": "Le pincement articulaire et les ostéophytes sont les signes classiques de la gonarthrose."
   },
   {
-    "id":18,
+    "id":24,
     "role" : "mme_aida",
     "message": "Et côté prise de sang, vous me faites quoi ?"
   },
   {
-    "id": 19,
+    "id": 25,
     "role": "game",
     "multipleChoice": true,
-    "question": "Question 6 : Et côté prise de sang, vous me faites quoi ?",
+    "question": "Question 7 : Et côté prise de sang, vous me faites quoi ?",
     "options": {
       "A": {
         "text": "A : Rien, aucun intérêt.",
@@ -229,24 +282,24 @@
     }
   },
   {
-    "id":20,
+    "id":26,
     "role" : "me",
     "message": "Rien, aucun intérêt."
   },
   {
-    "id":21,
+    "id":27,
     "role" : "narrator",
-    "message": "Un bilan biologique n’est demandé qu'en cas de doute ou pour éliminer une arthropathie secondaire. Ainsi si un bilan biologique est demandé, il sera normal car l’arthrose n'entraîne pas d’inflammation majeure."
+    "message": "Un bilan biologique n’est demandé qu'en cas de doute ou pour éliminer une arthropathie secondaire. Ainsi si un bilan biologique est demandé, il sera normal car l’arthrose n'entraîne pas d’inflammation."
   },
   {
-    "id":22,
+    "id":28,
     "role" : "mme_aida",
     "message": "Mais ça se soigne, docteur ?"
   },
   {
-    "id": 23,
+    "id":29,
     "role": "game",
-    "question": "Question 7 : Mais ça se soigne, docteur ?",
+    "question": "Question 8 : Mais ça se soigne, docteur ?",
     "options": {
       "A": {
         "text": "A : Non, il faut vivre avec.",
@@ -267,25 +320,25 @@
     }
   },
   {
-    "id":24,
+    "id":30,
     "role" : "me",
     "message": "Oui, on commence par les antalgiques, puis les AINS si besoin. "
   },
   {
-    "id":25,
+    "id":31,
     "role" : "narrator",
-    "message": "Le traitement est progressif, débutant par les mesures simples : antalgiques,  AINS, viscosupplémentation… Les injections de corticoïdes sont indiquées en cas de  poussée congestive ) "
+    "message": "Le traitement est progressif, débutant par les mesures simples : antalgiques,  AINS, viscosupplémentation… Les injections de corticoïdes sont indiquées en cas de  poussée congestive"
   },
   {
-    "id":26,
+    "id":32,
     "role" : "mme_aida",
     "message": "Que puis-je faire au quotidien, docteur ?"
   },
   {
-    "id": 27,
+    "id":33,
     "role": "game",
     "multipleChoice": true,
-    "question": "Question 8 : Que puis-je faire au quotidien, docteur ?",
+    "question": "Question 9 : Que puis-je faire au quotidien, docteur ?",
     "options": {
       "A": {
         "text": "A : Rien, reposez-vous et  évitez toute activité ",
@@ -310,27 +363,27 @@
     }
   },
   {
-    "id":28,
+    "id":34,
     "role" : "me",
     "message": "Perdez du poids, faites du yoga, taï chi . "
   },
   {
-    "id":29,
+    "id":35,
     "role" : "me",
     "message": "Marche quotidienne adaptée."
   },
   {
-    "id":30,
+    "id":36,
     "role" : "me",
     "message": "Evitez les escaliers."
   },
   {
-    "id":31,
+    "id":37,
     "role" : "narrator",
     "message": "L’activité physique modérée et la perte de poids réduisent considérablement les douleurs et la progression."
   },
   {
-    "id": 32,
+    "id":38,
     "role": "narrator",
     "end" : true,
     "narr" : "Vous avez accompagné Mme Aida avec sérieux et empathie, en menant une démarche diagnostique rigoureuse et une prise en charge adaptée. Elle repart rassurée et motivée pour améliorer son quotidien !",

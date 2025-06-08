@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MainComponent } from './main/main.component';
-import { HeroComponent } from './shared/hero/hero.component';
 import { CardsComponent } from './shared/cards/cards.component';
 import { ChatComponent } from './Scénario/chat/chat.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,7 +29,6 @@ import { AproposComponent } from './shared/apropos/apropos.component';
     NavbarComponent,
     FooterComponent,
     MainComponent,
-    HeroComponent,
     CardsComponent,
     ChatComponent,
     QuestionDialogComponent,

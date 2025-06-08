@@ -290,6 +290,14 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     });
   }
+  isImageMessage(text: string): boolean {
+    return /^<img[^>]+>$/.test(text.trim());
+  }
+
+  extractImageSrc(text: string): string {
+    const match = text.match(/src=['"]([^'"]+)['"]/);
+    return match ? match[1] : '';
+  }
 
   showRetryAlert(): void {
     Swal.fire({

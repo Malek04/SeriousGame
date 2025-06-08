@@ -1,15 +1,12 @@
 <div class="chat-container">
   <!-- Fixed Header with Progress Bar -->
   <div class="header">
-    <!-- Back Button -->
     <button mat-icon-button [routerLink]="['']" matTooltip="Retour à l'accueil">
       <mat-icon>arrow_back</mat-icon>
     </button>
 
-    <!-- Title -->
     <h2 class="header-title">{{ scenarioTitle }}</h2>
 
-    <!-- Reload Button -->
     <button mat-icon-button (click)="reloadGame()" matTooltip="Recommencer">
       <mat-icon>autorenew</mat-icon>
     </button>
@@ -19,13 +16,14 @@
   <div class="progress-bar">
     <div
       class="progress"
-      [style.width.%]="scenario.length > 0 ? ((currentIndex + 1) / scenario.length) * 100 : 0"
+      [style.width.%]="
+        scenario.length > 0 ? ((currentIndex + 1) / scenario.length) * 100 : 0
+      "
     ></div>
   </div>
 
   <!-- Chat Body with Scrollable Content and Fixed Question -->
   <div class="chat-body">
-    <!-- Scrollable Chat Section -->
     <div class="chat-scroll" #chatBox>
       <!-- Chat History -->
       <div
@@ -65,35 +63,56 @@
                 alt="Profile Image"
                 class="profile-image"
               />
-              <div
-                class="chat-bubble"
-                [ngClass]="{
-                  'madame-monia': entry.from === 'mme_monia',
-                  'monsieur-cherif': entry.from === 'mr_cherif',
-                  'madame-aida': entry.from === 'mme_aida',
-                  me: entry.from === 'me'
-                }"
+
+              <!-- Wrap message only if it's not a pure image -->
+              <ng-container
+                *ngIf="!isImageMessage(entry.text); else imageOnlyMessage"
               >
                 <div
-                  class="message-text"
+                  class="chat-bubble"
                   [ngClass]="{
-                    'typing-switch':
-                      entry.from === 'mme_monia' || entry.from === 'me'
+                    'madame-monia': entry.from === 'mme_monia',
+                    'monsieur-cherif': entry.from === 'mr_cherif',
+                    'madame-aida': entry.from === 'mme_aida',
+                    me: entry.from === 'me'
                   }"
                 >
-                  <span *ngIf="entry.partial" class="dots">...</span>
-                  <span *ngIf="!entry.partial" class="real-message">
-                    {{ entry.text }}
-                  </span>
+                  <div
+                    class="message-text"
+                    [ngClass]="{
+                      'typing-switch':
+                        entry.from === 'mme_monia' || entry.from === 'me'
+                    }"
+                  >
+                    <span *ngIf="entry.partial" class="dots">...</span>
+                    <span
+                      *ngIf="!entry.partial"
+                      class="real-message"
+                      [innerHTML]="entry.text"
+                    ></span>
+                  </div>
                 </div>
-              </div>
+              </ng-container>
+
+              <!-- Image-only message outside bubble -->
+              <ng-template #imageOnlyMessage>
+                <img
+                  [src]="extractImageSrc(entry.text)"
+                  alt="Image Message"
+                  class="chat-image"
+                />
+              </ng-template>
             </div>
           </div>
         </ng-container>
 
         <!-- Feedback -->
         <div
-          *ngIf="entry.type === 'answer' && entry.feedback && entry.feedback.trim() !== ''"
+          *ngIf="
+            entry.type === 'answer' &&
+            entry.feedback &&
+            entry.feedback.trim() !== ''
+          "
           class="chat-bubble"
           [ngClass]="{ correct: entry.correct, incorrect: !entry.correct }"
         >
@@ -103,11 +122,12 @@
     </div>
 
     <!-- Question at the Bottom of Chat -->
-    <div class="chat-row question-row" *ngIf="pendingQuestion">
-      <div
-        class="chat-bubble question-bubble"
-        (click)="openQuestionModal(pendingQuestion)"
-      >
+    <div
+      class="question-row"
+      *ngIf="pendingQuestion"
+      (click)="openQuestionModal(pendingQuestion)"
+    >
+      <div class="question-text">
         {{ pendingQuestion.data.question }}
       </div>
     </div>
