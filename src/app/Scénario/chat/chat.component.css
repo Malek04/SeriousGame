@@ -128,9 +128,9 @@
 }
 
 .question-text {
-  margin: 0;
   font-style: italic;
-  font-size: 1rem;
+  font-size: 0.9rem;   /* match narrator */
+  font-weight: 400;    /* match narrator */
   white-space: normal;
 }
 
